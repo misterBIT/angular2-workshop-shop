@@ -18,6 +18,7 @@ export class ChatRoomService{
       
     this.messages$ = this.socket$
         .switchMap(socket => Observable.fromEvent(socket, 'chat message'))
+        // .do((ev)=>console.log('Got Msg:',  ev) )
         .startWith([])
         .scan((acc, curr)=> [...acc, curr]);
     
@@ -36,6 +37,7 @@ export class ChatRoomService{
       return {message, socket};
     })
     .subscribe(({message, socket})=>{
+      // console.log('Emitting msg: ', message);
       socket.emit('chat message', message);
     })
   }

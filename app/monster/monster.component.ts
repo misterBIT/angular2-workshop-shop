@@ -33,10 +33,6 @@ export class MonsterComponent implements OnInit {
      prmMonster.then((monster: MonsterModel) => {
        this.monster = monster;
      });
-
-
-
-    //  this.service.getHero(id).then(hero => this.hero = hero);
    });
   }
 

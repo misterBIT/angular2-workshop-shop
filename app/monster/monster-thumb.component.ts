@@ -3,7 +3,7 @@ import {MonsterModel} from './monster.model';
 
 @Component({
   moduleId: module.id,
-  selector: 'monster-details',
+  selector: 'monster-thumb',
   styleUrls: [`monster.css`],
   inputs: ['monster'],
   template: `
@@ -18,7 +18,7 @@ import {MonsterModel} from './monster.model';
           `
 
 })
-export class MonsterDetailsComponent implements OnInit {
+export class MonsterThumbComponent implements OnInit {
 
   private monster : MonsterModel;
 

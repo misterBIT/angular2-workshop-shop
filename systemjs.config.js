@@ -13,13 +13,15 @@
     'rxjs':                       'node_modules/rxjs',
     'socket.io-client':           'node_modules/socket.io-client/socket.io.js',
     'socket.io-parser':           'node_modules/socket.io-parser/index.js',
+    'ng2-file-upload':            'node_modules/ng2-file-upload'  
   };
 
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
-    'app':                        { main: 'main.js',  defaultExtension: 'js' },
-    'rxjs':                       { defaultExtension: 'js' },
-    'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
+    'app':                          { main: 'main.js',  defaultExtension: 'js' },
+    'rxjs':                         { defaultExtension: 'js' },
+    'angular2-in-memory-web-api':   { main: 'index.js', defaultExtension: 'js' },
+    'ng2-file-upload':              { main: 'ng2-file-upload.js', defaultExtension: 'js' },
   };
 
   var ngPackageNames = [

@@ -3,12 +3,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, REACTIVE_FORM_DIRECTIVES, FormControl} from '@angular/forms';
 import {MonsterService} from './monster.service';
 import {MonsterModel} from './monster.model';
+import {UploadDemoComponent} from '../shared/upload-demo/upload-demo.component'
 
 @Component({
   moduleId: module.id,
   // selector: 'monster-edit',
   templateUrl: 'monster-edit.component.html',
-  directives: [REACTIVE_FORM_DIRECTIVES]
+  directives: [REACTIVE_FORM_DIRECTIVES, UploadDemoComponent]
 })
 export class MonsterEditComponent implements OnInit {
 
@@ -39,22 +40,11 @@ export class MonsterEditComponent implements OnInit {
       });
   }
   save() {
-
-    if (this.monsterToEdit) {
-      // updating a monster
-      this.monsterService.save(this.frmMonster.value, this.monsterToEdit.id)
+    const monsterId = (this.monsterToEdit)?  this.monsterToEdit.id : undefined;
+    this.monsterService.save(this.frmMonster.value, monsterId)
       .then(()=>{
           this.router.navigate(['/monster']);
       });
-    } else {
-      // a new monster
-      console.log('Monster Created', this.frmMonster.value);
-      this.monsterService.save(this.frmMonster.value)
-        .then((monster : MonsterModel)=>{
-          // alert(`Monster with id ${monster.id} was created`);
-          this.router.navigate(['/monster']);
-        });
-    }
 
   }
 
@@ -67,5 +57,4 @@ export class MonsterEditComponent implements OnInit {
       power: [5, Validators.required]
     });
   }
-
 }

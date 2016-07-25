@@ -38,7 +38,7 @@ export class MonsterService {
       });
 
     prmMonster.catch(err => {
-      console.log('Problem talking to server');
+      console.log('MonsterService::get - Problem talking to server');
     });
     return prmMonster;
 
@@ -53,7 +53,7 @@ export class MonsterService {
       });
 
     prmMonster.catch(err => {
-      console.log('Problem talking to server', err);
+      console.log('MonsterService::remove - Problem talking to server', err);
     });
     return prmMonster;
   }
@@ -79,7 +79,7 @@ export class MonsterService {
       });
 
     prmMonster.catch(err => {
-      console.log('Problem talking to server', err);
+      console.log('MonsterService::save - Problem talking to server', err);
     });
     return prmMonster;
   }

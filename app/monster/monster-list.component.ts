@@ -37,7 +37,7 @@ import {MonsterThumbComponent} from './monster-thumb.component';
 })
 export class MonsterListComponent implements OnInit {
   // TODO: let the pipe setup the initial filter
-  private filter = {byName: '', byPower: ''};
+  private filter;
   private monsters : MonsterModel[] = [];
 
   constructor(private toastr : ToastsManager, private monsterService : MonsterService) { }

@@ -10,6 +10,11 @@ export class MonsterService {
   private baseUrl = 'http://localhost:3003/data/monster/';
   constructor(private http: Http) {}
 
+
+  public get url() {
+      return this.baseUrl;
+  }
+
   // query (GETs a list)
   query(): Promise<MonsterModel[]> {
 

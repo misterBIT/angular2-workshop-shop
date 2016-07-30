@@ -28,7 +28,7 @@ export class MonsterEditComponent implements OnInit {
     }
 
   ngOnInit() {
-    console.log('this.route.params', this.route.params);
+    // console.log('this.route.params', this.route.params);
     this.prepareForm();
     this.route.params.subscribe(params => {
         const id = params['id'];

@@ -1,11 +1,30 @@
+export interface IMonsterOptions {
+	name?:string;
+	power?:number;
+	_id?:string;
+	imgUrl?:string;
+}
+
 export class MonsterModel {
+	name?:string;
+	power?:number;
+	_id?:string;
+	imgUrl?:string;
 
-  constructor(public name: string, public power: number, private _id: string) {}
+	constructor(options:IMonsterOptions = {}) {
+		Object.assign(this, options);
+	}
 
-  get id() {
-    return this._id;
-  }
-  getImgUrl() {
-    return `public/img/monster/${this.name}.png`;
-  }
+	set id(id) { /// allows for both _id an id (mrjson/mongo)
+		this._id = id;
+	}
+
+	get id() {
+		return this._id;
+	}
+
+	getImgUrl() {
+		return this.imgUrl;
+		// return `public/img/monster/${this.name}.png`;
+	}
 }

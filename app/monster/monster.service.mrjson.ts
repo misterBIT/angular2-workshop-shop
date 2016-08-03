@@ -18,7 +18,7 @@ export class MonsterService {
       .then(res => {
         const jsonMonsters = res.json();
         return jsonMonsters.map((jsonMonster : MonsterModel) =>
-          new MonsterModel(jsonMonster.name, jsonMonster.power, jsonMonster.id))
+          new MonsterModel(jsonMonster))
       });
 
     prmMonsters.catch(err => {
@@ -34,7 +34,7 @@ export class MonsterService {
       .toPromise()
       .then(res => {
         const jsonMonster = res.json();
-        return new MonsterModel(jsonMonster.name, jsonMonster.power, jsonMonster.id);
+        return new MonsterModel(jsonMonster);
       });
 
     prmMonster.catch(err => {
@@ -75,7 +75,7 @@ export class MonsterService {
     prmMonster = response.toPromise()
       .then((res : any) => {
           const jsonMonster = res.json();
-          return new MonsterModel(jsonMonster.name, jsonMonster.power, jsonMonster.id);
+          return new MonsterModel(jsonMonster);
       });
 
     prmMonster.catch(err => {

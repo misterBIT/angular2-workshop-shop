@@ -1,9 +1,10 @@
 var webpack = require('webpack');
 var path = require('path');
-
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // Webpack Config
 var webpackConfig = {
+	context: __dirname,
 	entry: {
 		'polyfills': './src/polyfills.ts',
 		'vendor': './src/vendor.ts',
@@ -15,6 +16,7 @@ var webpackConfig = {
 	},
 
 	plugins: [
+		new CopyWebpackPlugin([{from: 'public/', to: '.'}]),
 		new webpack.optimize.OccurenceOrderPlugin(true),
 		new webpack.optimize.CommonsChunkPlugin({name: ['app', 'vendor', 'polyfills'], minChunks: Infinity}),
 	],

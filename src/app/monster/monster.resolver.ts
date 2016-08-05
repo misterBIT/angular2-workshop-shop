@@ -2,8 +2,9 @@ import {Resolve, ActivatedRouteSnapshot} from "@angular/router";
 import {Injectable} from "@angular/core";
 import {MonsterService} from "./monster.service";
 import {Observable} from "rxjs/Rx";
+import {MonsterModel} from "./monster.model";
 @Injectable()
-export class MonsterResolver implements Resolve {
+export class MonsterResolver implements Resolve<Observable<MonsterModel>> {
 	constructor(private monsterService:MonsterService) {
 	}
 

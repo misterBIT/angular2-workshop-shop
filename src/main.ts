@@ -4,6 +4,7 @@ import {provideForms, disableDeprecatedForms} from '@angular/forms';
 import {HTTP_PROVIDERS} from '@angular/http';
 import {ROUTER_PROVIDERS} from './app/app.routes';
 import {AppComponent} from './app/app.component';
+import {MonsterService} from "./app/monster/monster.service";
 
 // global import of lib css using style-loader, the rest of our css is required as string for ng2 components
 require('!!style!css!bootstrap/dist/css/bootstrap.min.css');
@@ -11,7 +12,7 @@ require('!!style!css!bootstrap/dist/css/bootstrap.min.css');
 bootstrap(AppComponent, [
     disableDeprecatedForms(),
     provideForms(),
-    ROUTER_PROVIDERS,
+    ROUTER_PROVIDERS,MonsterService,
     HTTP_PROVIDERS,
     {provide: LocationStrategy, useClass: PathLocationStrategy}
 ]);

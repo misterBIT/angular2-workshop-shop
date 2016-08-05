@@ -5,7 +5,6 @@ import {MonsterModel} from './monster.model';
 
 
 @Component({
-  moduleId: module.id,
   styleUrls: [`monster.css`],
   // selector: 'monster-list',
   template: `

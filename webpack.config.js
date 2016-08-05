@@ -8,11 +8,11 @@ var webpackConfig = {
 	entry: {
 		'polyfills': './src/polyfills.ts',
 		'vendor': './src/vendor.ts',
-		'main': './src/main.ts',
+		'main': './src/main.ts'
 	},
 
 	output: {
-		path: './dist',
+		path: './dist'
 	},
 	plugins: [
 		new CopyWebpackPlugin([{from: 'public/', to: '.'}]),

@@ -1,8 +1,7 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {PetService} from './pet.service';
-import {LetterSelector} from './letter-selector.component'
-
-import {PetComponent} from './pet.component';
+import {Component} from "@angular/core";
+import {PetService} from "./pet.service";
+import {LetterSelector} from "./letter-selector.component";
+import {PetComponent} from "./pet.component";
 import {SearchPipe} from "./search.pipe";
 
 @Component({

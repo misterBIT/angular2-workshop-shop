@@ -4,7 +4,7 @@ export class PetModel{
     name: string;
     awake: boolean = false;
 
-    constructor(name:string='') {
+    constructor(name = '') {
         this.name = name;
         this.id = ++PetModel.maxId;
     }   
@@ -15,8 +15,8 @@ export class PetModel{
 
 export class PetService {
     pets = [new PetModel('Avsha'),new PetModel('Abulele'),new PetModel('AvAv'),
-            new PetModel('Banian'),new PetModel('Baba'),new PetModel('Basta'), 
-            new PetModel('Craco'),new PetModel('Charli'),new PetModel('Chompi') 
+        new PetModel('Banian'),new PetModel('Baba'),new PetModel('Basta'),
+            new PetModel('Craco'),new PetModel('Charli'),new PetModel('Chompi')
            ];
            
     addPet(pet:PetModel) {

@@ -1,11 +1,10 @@
-import { Component, OnInit, ViewChildren } from '@angular/core';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
-
-import {MonsterService} from './monster.service';
-import {MonsterModel} from './monster.model';
-import {FilterByPipe} from '../shared/pipes/filter-list.pipe';
-import {MonsterFilterComponent} from './monster-filter.component';
-import {MonsterThumbComponent} from './monster-thumb.component';
+import {Component, OnInit} from "@angular/core";
+import {ToastsManager} from "ng2-toastr/ng2-toastr";
+import {MonsterService} from "./monster.service";
+import {MonsterModel} from "./monster.model";
+import {FilterByPipe} from "../shared/pipes/filter-list.pipe";
+import {MonsterFilterComponent} from "./monster-filter.component";
+import {MonsterThumbComponent} from "./monster-thumb.component";
 
 
 @Component({

@@ -7,14 +7,16 @@ import {ChatRoomComponent} from "./chat/chat-room.component";
 import {RouterConfig, ROUTER_DIRECTIVES, provideRouter} from "@angular/router";
 import {MonsterResolver} from "./monster/monster.resolver";
 import {MonsterService} from "./monster/monster.service";
+import {PetsApp} from "./pets/pets-app";
 
-const routes:RouterConfig = [
-		{path: '', component: AppComponent},
-		{path: 'monster', component: MonsterListComponent},
-		{path: 'monster/edit', component: MonsterEditComponent},
-		{path: 'monster/edit/:id', component: MonsterEditComponent, resolve: {monster: MonsterResolver}},
-		{path: 'monster/:id/:name', component: MonsterComponent},
-		{path: 'chat', component: ChatRoomComponent}
+const routes: RouterConfig = [
+  { path: '', component: AppComponent },
+  { path: 'pets', component: PetsApp },
+  { path: 'monster', component: MonsterListComponent },
+  { path: 'monster/edit', component: MonsterEditComponent , resolve: {monster: MonsterResolver}},
+  { path: 'monster/edit/:id', component: MonsterEditComponent },
+  { path: 'monster/:id/:name', component: MonsterComponent },
+  { path: 'chat', component: ChatRoomComponent }
 
 	]
 	;

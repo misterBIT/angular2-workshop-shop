@@ -15,8 +15,8 @@ export class ChatRoomService{
   constructor(@Inject('io') io){
     this.socket$ = this.url$
     // uncomment this line to activate a socket
-    //   .switchMap(url => Observable.of(io(url)));  
-      .switchMap(url => Observable.never());  
+      .switchMap(url => Observable.of(io(url))); //TODO: add a button for state
+      // .switchMap(url => Observable.never());
       
     this.messages$ = this.socket$
         .switchMap(socket => Observable.fromEvent(socket, 'chat message'))

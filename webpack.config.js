@@ -14,7 +14,6 @@ var webpackConfig = {
 	output: {
 		path: './dist',
 	},
-
 	plugins: [
 		new CopyWebpackPlugin([{from: 'public/', to: '.'}]),
 		new webpack.optimize.OccurenceOrderPlugin(true),

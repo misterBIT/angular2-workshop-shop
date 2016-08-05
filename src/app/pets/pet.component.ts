@@ -13,13 +13,13 @@ import {PetModel} from './pet.service';
         </style>
         <div [ngClass]="{awake: pet.awake}">
             {{pet.name}}
-            <img [src]="'img/pet/'+pet.id+'.png'" />
+            <img [src]="pet.getImgUrl()" />
             <input type="checkbox" [checked]="pet.awake" (click)="toggle.emit(pet)" > Awake?
         </div>
     `
 })
 export class PetComponent implements OnInit {
-    @Input() pet;
+    @Input() pet:PetModel;
     @Output() toggle = new EventEmitter<PetModel>();
     constructor() { }
 

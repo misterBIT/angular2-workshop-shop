@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 import {PetModel} from './pet.service';
 
 @Pipe({
@@ -7,8 +7,8 @@ import {PetModel} from './pet.service';
 })
 
 export class SearchPipe implements PipeTransform {
-    transform(pets: PetModel[], [letter]) : any {
+    transform(pets: PetModel[], letter, kind): any {
         if (!letter) return pets;
-        return pets.filter((pet)=>pet.name.toUpperCase().startsWith(letter));
+        return pets.filter((pet)=>pet.kind == kind && pet.name.toUpperCase().startsWith(letter));
     }
 }

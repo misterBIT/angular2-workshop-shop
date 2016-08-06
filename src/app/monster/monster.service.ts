@@ -25,7 +25,7 @@ export class MonsterService {
 			.then(res => {
 				const jsonMonsters = res.json();
 				return jsonMonsters.map((jsonMonster:any) =>
-					new MonsterModel(jsonMonster))
+					new MonsterModel(jsonMonster));
 			});
 
 		prmMonsters.catch(err => {
@@ -73,10 +73,10 @@ export class MonsterService {
 
 		if (id) {
 			const url = this.baseUrl + id;
-			response = this.http.put(url, monsterData)
+			response = this.http.put(url, monsterData);
 		} else {
 			const url = this.baseUrl;
-			response = this.http.post(url, monsterData)
+			response = this.http.post(url, monsterData);
 		}
 
 		prmMonster = response.toPromise()

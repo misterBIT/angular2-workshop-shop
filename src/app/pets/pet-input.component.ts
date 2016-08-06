@@ -4,7 +4,8 @@ import {PetService, PetModel, PetKind} from './pet.service';
 @Component({
     selector: 'pet-input',
     template: `
-        <form (submit)="addPet()">
+            <h1>Add Pet</h1>
+            <form (submit)="addPet()">
             Pet Name: <input type="text" name="name" [(ngModel)]="pet.name" />
             Pet Kind: <select name="kind" [(ngModel)]="pet.kind">
                                 <option *ngFor="let kind of kinds" [value]="kind">{{kindsObj[kind]}}</option>

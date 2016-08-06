@@ -10,6 +10,6 @@ export class MonsterResolver implements Resolve<Observable<MonsterModel>> {
 
 	resolve(route:ActivatedRouteSnapshot):any {
 		const id = route.params['id'];
-		return Observable.from(this.monsterService.get(id))
+		return Observable.from(this.monsterService.get(id));
 	}
 }

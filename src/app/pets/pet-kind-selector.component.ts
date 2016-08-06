@@ -3,9 +3,9 @@ import {PetKind} from "./pet.service";
 
 @Component({
     selector: 'petKind-selector',
-    styles  : [`:host{float:left ;}ul {list-style:none}`, `li {display:inline-block; padding:0 5px;}`, `.selected{color:red}`],
+    styles  : [`:host{float:left;margin-right: 20px; }`],
     template: `
-    <select name="kind" [value]="kindSelected" (change)="selectKind($event)">
+    <select class="form-control" name="kind" [value]="kindSelected" (change)="selectKind($event)">
         <option *ngFor="let kind of kinds" [value]="kind">{{kindsObj[kind]}}
         </option>
     </select>
@@ -23,7 +23,7 @@ export class PetKindSelector implements OnInit {
 
     selectKind(e) {
         this.kindSelected = e.target.value;
-        this.selectEmitter.emit(this.kindSelected)
+        this.selectEmitter.emit(this.kindSelected);
     }
 
     ngOnInit() {

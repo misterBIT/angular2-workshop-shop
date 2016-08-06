@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter} from '@angular/core';
 import {PetModel} from './pet.service';
 
 @Component({
-    selector: 'pet-render',
+    selector     : 'pet-render',
     encapsulation: ViewEncapsulation.Emulated,
-    template: `
+    template     : `
         <style>
             .awake {
                 color:orange;
@@ -19,10 +19,13 @@ import {PetModel} from './pet.service';
     `
 })
 export class PetComponent implements OnInit {
-    @Input() pet:PetModel;
+    @Input() pet: PetModel;
     @Output() toggle = new EventEmitter<PetModel>();
-    constructor() { }
 
-    ngOnInit() { }
+    constructor() {
+    }
+
+    ngOnInit() {
+    }
 
 }

@@ -9,12 +9,16 @@ import {PetKindSelector} from "./pet-kind-selector.component";
     selector  : 'pet-list',
     directives: [PetComponent, LetterSelector, PetKindSelector],
     pipes     : [SearchPipe],
+    styles    : [`input[name=awake] {margin:0;height: 15px;}`],
     template  : `
         <h2>Pets</h2>
         <petKind-selector (select)="kind = $event"></petKind-selector>
-         <letter-selector (select)="letter = $event"></letter-selector>
+        <label class="form-group"><span class="control-label">Awake</span>
+            <input class="form-control input-sm" type="checkbox" [(ngModel)]="awake" name="awake"/>
+        </label>
+        <letter-selector (select)="letter = $event"></letter-selector>
         <ul>
-            <li *ngFor="let currPet of petService.pets | search:letter:kind "  >
+            <li *ngFor="let currPet of petService.pets | search:letter:kind:awake "  >
                <pet-render [pet]="currPet" (toggle)="petService.togglePet($event)"></pet-render>
             </li>
         </ul>
@@ -22,6 +26,7 @@ import {PetKindSelector} from "./pet-kind-selector.component";
 
 })
 export class PetList {
+    awake = true;
     letter = '';
     kind = PetKind.cat;
 

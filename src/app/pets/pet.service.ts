@@ -29,7 +29,7 @@ export class PetModel implements PetOptions {
     }
 
     getImgUrl() {
-        return `img/pet/${PetKind[this.kind]}s/${this.id}.png`
+        return `img/pet/${PetKind[this.kind]}s/${this.id}.png`;
     }
 }
 

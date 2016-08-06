@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ChatRoomService} from './chat-room.service'
+import {ChatRoomService} from './chat-room.service';
 @Component({
     selector: 'chat-room',
     styles:[`

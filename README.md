@@ -1,4 +1,4 @@
-# Angular 2 workshop seed app (simplified)
+# Angular 2 workshop seed app 
 
 This repository holds a simple demo seed app based on [angular2-starter](https://github.com/angular/angular2-seed/),
 
@@ -11,6 +11,9 @@ The "github browser" app in the original was replaced for a simple app with 3 se
 ## Prerequisites
 
 Node.js and npm are essential to Angular 2 development. 
+
+    WINDOWS ONLY run to install dependencies as global 
+    npm install -g webpack webpack-dev-server typings typescript 
     
 <a href="https://docs.npmjs.com/getting-started/installing-node" target="_blank" title="Installing Node.js and updating npm">
 Get it now</a> if it's not already installed on your machine.
@@ -68,7 +71,7 @@ npm start
 
 > If the `typings` folder doesn't show up after `npm install` please install them manually with:
 
-> `npm run typings -- install`
+> `typings install`
 
 The `npm start` command uses webpack (w/ dev-server) to run the applicaiton
 Shut it down manually with Ctrl-C.

@@ -12,9 +12,6 @@ The "github browser" app in the original was replaced for a simple app with 3 se
 
 Node.js and npm are essential to Angular 2 development. 
 
-    WINDOWS ONLY run to install dependencies as global 
-    npm install -g webpack webpack-dev-server typings typescript 
-    
 <a href="https://docs.npmjs.com/getting-started/installing-node" target="_blank" title="Installing Node.js and updating npm">
 Get it now</a> if it's not already installed on your machine.
  
@@ -24,6 +21,9 @@ Older versions produce errors.
 
 We recommend [nvm](https://github.com/creationix/nvm) for managing multiple versions of node and npm. (not avilable for windows, other similar solutions exist) 
 
+ WINDOWS ONLY run to install dependencies as global 
+    npm install -g webpack webpack-dev-server typings typescript 
+    
 ## Create a new project based on this app
 
 Download this repo or clone it into new project folder (e.g., `my-proj`).

@@ -8,11 +8,10 @@ import {MonsterThumbComponent} from "./monster-thumb.component";
 
 
 @Component({
-  moduleId: module.id,
-  styleUrls: [`monster.css`],
+  // styleUrls: [`app/monster/monster.scss`],
+  styles:[`li {background-color:yellow; display:inline-block; list-style:none;padding:1em;margin:1em;}`],
   pipes: [FilterByPipe],
   directives: [MonsterFilterComponent, MonsterThumbComponent],
-  // selector: 'monster-list',
   template: `
     <section>
       <h2>Monsters</h2>

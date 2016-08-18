@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 
 @Component({
-  moduleId: module.id,
+  // moduleId: module.id,
   selector: 'monster-filter',
   outputs: ['filterChange'],
   styles: [`section {background-color: #DDD; margin: 2em 0; padding:0.4em 1em 1em; border-radius:0.4em} `],

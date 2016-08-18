@@ -3,7 +3,7 @@ import {MonsterModel} from './monster.model';
 
 @Component({
 	selector : 'monster-thumb',
-	styleUrls: [`monster.css`],
+	styleUrls: [`monster.scss`],
 	inputs   : ['monster'],
 	template : `
           <section>
@@ -18,7 +18,6 @@ import {MonsterModel} from './monster.model';
 
 })
 export class MonsterThumbComponent implements OnInit {
-	@Input()
 	private monster:MonsterModel;
 	private url:string;
 

@@ -9,7 +9,7 @@ import {FILE_UPLOAD_DIRECTIVES, FileUploader} from 'ng2-file-upload';
 const URL = 'http://localhost:3003/data/monster';
 
 @Component({
-    moduleId: module.id,
+    // moduleId: module.id,
   selector: 'upload-demo',
   templateUrl: 'upload-demo.html',
   directives: [FILE_UPLOAD_DIRECTIVES, NgClass, NgStyle, CORE_DIRECTIVES, FORM_DIRECTIVES]

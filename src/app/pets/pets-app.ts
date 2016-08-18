@@ -6,7 +6,7 @@ import {PetService} from './pet.service';
 	selector  : 'pets-app',
 	template  : `
         <pet-input></pet-input>
-        <pet-list [letter]="letter"></pet-list>
+        <pet-list></pet-list>
     `,
 	directives: [PetInput, PetList],
 	providers : [PetService]

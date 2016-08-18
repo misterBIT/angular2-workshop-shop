@@ -14,12 +14,14 @@ export class ChatRoomService {
 
     constructor(@Inject('io') io) {
         this.socketRef = io(this.url);
-        this.socket$ = Observable.of(this.socketRef);
+        // Shutdown socket functionality untill needed
+        // this.socket$ = Observable.of(this.socketRef);
+        this.socket$ = Observable.never();
 
         this.messages$ = this.socket$
             .switchMap(socket => Observable.fromEvent(socket, 'chat message'))
             .startWith([])
-            .scan((acc, curr)=> [...acc, curr])
+            .scan((acc, curr)=> [...acc, curr]);
 
         const disconnect$ = this.socket$
             .switchMap(socket => Observable.fromEvent(socket, 'disconnect'));
@@ -30,7 +32,7 @@ export class ChatRoomService {
 
         this.connected$ = Observable.merge(
             connect$.mapTo(true),
-            disconnect$.mapTo(false),
+            disconnect$.mapTo(false)
         );
 
         this.send$
@@ -38,7 +40,7 @@ export class ChatRoomService {
                 return {message, socket};
             })
             .subscribe(({message, socket})=> {
-                //console.log('sending message: ', message);
+                // console.log('sending message: ', message);
                 socket.emit('chat message', message);
             });
     }

@@ -1,24 +1,20 @@
-li {background-color:yellow}
+$bgColor : #e6eef1;
 
-// $bgColor : yellow;
+li {
+  list-style: none;
+  display:inline-block;
+  padding:1em;
+  margin:1em;
+  /*border: 1px solid gray;*/
+  background-color:$bgColor;
+  border-radius: 0.2em;
+  text-align: center;
+}
 
-// section {
-//   background-color: $bgColor;
+.monster-thumb {
+  font-size: 2em;
 
-// }
-
-// li {
-//   list-style: none;
-//   display:inline-block;
-//   padding:1em;
-//   margin:1em;
-//   /*border: 1px solid gray;*/
-//   background-color:#e6eef1;
-//   border-radius: 0.2em;
-//   text-align: center;
-//   font-size: 2em;
-//   color:darkblue;
-// }
+}
 
 
 // .imgMonster {

@@ -2,16 +2,12 @@ import {Component, OnInit} from "@angular/core";
 import {ToastsManager} from "ng2-toastr/ng2-toastr";
 import {MonsterService} from "./monster.service";
 import {MonsterModel} from "./monster.model";
-import {FilterByPipe} from "../shared/pipes/filter-list.pipe";
 import {MonsterFilterComponent} from "./monster-filter.component";
 import {MonsterThumbComponent} from "./monster-thumb.component";
 
-
 @Component({
-  // styleUrls: [`app/monster/monster.scss`],
-  styles:[`li {background-color:yellow; display:inline-block; list-style:none;padding:1em;margin:1em;}`],
-  pipes: [FilterByPipe],
-  directives: [MonsterFilterComponent, MonsterThumbComponent],
+  styleUrls:['./monster.scss'],
+  // directives: [MonsterFilterComponent, MonsterThumbComponent],
   template: `
     <section>
       <h2>Monsters</h2>

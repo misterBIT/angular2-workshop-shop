@@ -15,8 +15,8 @@ export class ChatRoomService {
     constructor(@Inject('io') io) {
         this.socketRef = io(this.url);
         // Shutdown socket functionality untill needed
-        // this.socket$ = Observable.of(this.socketRef);
         this.socket$ = Observable.never();
+        // this.socket$ = Observable.of(this.socketRef);
 
         this.messages$ = this.socket$
             .switchMap(socket => Observable.fromEvent(socket, 'chat message'))

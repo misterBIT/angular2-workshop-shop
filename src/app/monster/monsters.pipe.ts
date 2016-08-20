@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   pure: false
 })
 
-export class FilterByPipe implements PipeTransform {
+export class MonstersFilterByPipe implements PipeTransform {
   transform(list: any[], filter: any): any {
     if (!list) {return [];}
     if (!filter) {return list;}

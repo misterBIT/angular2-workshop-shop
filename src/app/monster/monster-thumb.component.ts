@@ -3,15 +3,15 @@ import {MonsterModel} from './monster.model';
 
 @Component({
 	selector : 'monster-thumb',
-	styleUrls: [`monster.scss`],
+	styleUrls:['monster.scss'],
 	inputs   : ['monster'],
 	template : `
-          <section>
+          <section class="monster-thumb">
             <p>{{monster.name}}</p>
             <a routerLink="/monster/{{monster.id}}/{{monster.name}}">
               <img class="imgMonster" *ngIf="url" [src]="url" />
             </a>
-            <h6>Power: {{monster.power}}</h6>
+            <p>Power: {{monster.power}}</p>
 
           </section>
           `

@@ -8,7 +8,7 @@ import {ChatRoomService} from './chat-room.service';
         <h2>{{(chatRoom.connected$ | async) ? "Connected!" : "Disconnected..."}}</h2>
         <button class="btn" (click)="chatRoom.toggleConnectionStatus()" [ngClass]="{'btn-danger': chatRoom.connected$ | async,'btn-info':!(chatRoom.connected$ | async)}">{{(chatRoom.connected$ | async) ? 'Disconnect' : 'Connect'}}</button>
         <div *ngIf="chatRoom.connected$|async" class="form-group">
-          <label class="">Enter Message: <input #i class="form-control" (keyup.enter)="chatRoom.send$.next(i.value); i.value = ''"></label>
+          <label class="">Enter Message: <input #i class="form-control" (keyup.enter)="chatRoom.send(i.value); i.value = ''"></label>
         </div>
         <div *ngFor="let message of chatRoom.messages$ | async">
           {{message}}
@@ -19,6 +19,7 @@ import {ChatRoomService} from './chat-room.service';
 export class ChatRoomComponent {
 
     constructor(private chatRoom: ChatRoomService) {
+        chatRoom.connect();
     }
 
 }

@@ -34,7 +34,6 @@ export class ChatRoomService {
 	}
 
 	connect() {
-		console.log('connect called!');
 		const socketRef = this.io(this.url);
 		this.socket$.next(socketRef);
 	}

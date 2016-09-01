@@ -5,6 +5,8 @@
   "scripts": {
     "start": "webpack-dev-server --inline --colors --progress --display-error-details --display-cached --port 8080 --content-base src",
     "build": "webpack",
+    "test": "karma start",
+    "tdd": "karma start --no-single-run --auto-watch",
     "postinstall": "typings install"
   },
   "devDependencies": {
@@ -13,10 +15,12 @@
     "copy-webpack-plugin": "^3.0.1",
     "css-loader": "^0.23.1",
     "file-loader": "^0.9.0",
+    "jasmine-core": "^2.5.0",
     "node-sass": "^3.8.0",
     "raw-loader": "^0.5.1",
     "resolve-url-loader": "^1.6.0",
     "sass-loader": "^4.0.0",
+    "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.1",
     "to-string-loader": "^1.1.4",
     "tslint": "^3.14.0",
@@ -45,6 +49,13 @@
     "rxjs": "5.0.0-beta.6",
     "socket.io": "^1.4.8",
     "socket.io-client": "^1.4.8",
-    "zone.js": "~0.6.12"
+    "zone.js": "~0.6.17",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^2.0.0 ",
+    "karma-coverage": "^1.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-mocha-reporter": "^2.0.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "1.8.0"
   }
 }

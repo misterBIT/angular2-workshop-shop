@@ -1,7 +1,7 @@
 import {Injectable, Inject} from "@angular/core";
 import {Observable} from "rxjs/Rx";
 import {BehaviorSubject} from 'rxjs';
-import * as io from "socket.io-client";
+
 
 @Injectable()
 export class ChatRoomService {
@@ -11,7 +11,7 @@ export class ChatRoomService {
 	public connected$: any;
 	public messages$: any;
 
-	constructor(@Inject('io') io) {
+	constructor(@Inject('io') private io: SocketIOClientStatic) {
 
 		this.socket$ = new BehaviorSubject(undefined);
 
@@ -34,8 +34,7 @@ export class ChatRoomService {
 	}
 
 	connect() {
-		console.log('connect called!');
-		const socketRef = io(this.url);
+		const socketRef = this.io(this.url);
 		this.socket$.next(socketRef);
 	}
 

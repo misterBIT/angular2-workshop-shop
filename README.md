@@ -4,9 +4,9 @@ This repository holds a simple demo seed app based on [angular2-starter](https:/
 
 The "github browser" app in the original was replaced for a simple app with 3 sections
 
-1.monsters (discussed on the 2nd day)
-2.pets (built together with the students in the 1st day)
-3.chat (disucssed on the 3rd day)
+1. monsters (discussed on the 2nd day)
+2. pets (built together with the students in the 1st day)
+3. chat (disucssed on the 3rd day)
 
 ## Prerequisites
 

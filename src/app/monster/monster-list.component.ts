@@ -2,13 +2,10 @@ import {Component, OnInit} from "@angular/core";
 import {ToastsManager} from "ng2-toastr/ng2-toastr";
 import {MonsterService} from "./monster.service";
 import {MonsterModel} from "./monster.model";
-import {MonsterFilterComponent} from "./monster-filter.component";
-import {MonsterThumbComponent} from "./monster-thumb.component";
 
 @Component({
-  styleUrls:['./monster.scss'],
-  // directives: [MonsterFilterComponent, MonsterThumbComponent],
-  template: `
+	styleUrls: ['./monster.scss'],
+	template: `
     <section>
       <h2>Monsters</h2>
 
@@ -30,29 +27,31 @@ import {MonsterThumbComponent} from "./monster-thumb.component";
   `
 })
 export class MonsterListComponent implements OnInit {
-  // TODO: let the pipe setup the initial filter
-  private filter;
-  private monsters : MonsterModel[] = [];
+	// TODO: let the pipe setup the initial filter
+	private filter;
+	private monsters: MonsterModel[] = [];
 
-  constructor(private toastr : ToastsManager, private monsterService : MonsterService) { }
+	constructor(private toastr: ToastsManager, private monsterService: MonsterService) {
+	}
 
-  ngOnInit() {
-    const prmMonsters = this.monsterService.query();
+	ngOnInit() {
+		const prmMonsters = this.monsterService.query();
 
-    prmMonsters.then((monsters : MonsterModel[]) => {
-      this.monsters = monsters;
-    });
+		prmMonsters.then((monsters: MonsterModel[]) => {
+			this.monsters = monsters;
+		});
 
-    prmMonsters.catch(err => {
-      alert('Sorry,cannot load the monsters, try again later');
-      console.log('Cought an error in MonsterList', err);
-    });
-  }
-  removeMonster(monsterId : string) {
-    this.monsterService.remove(monsterId)
-      .then((monsters : MonsterModel[])=>{
-        this.monsters = monsters;
-        this.toastr.success('You are awesome!', 'Success!');
-      });
-  }
+		prmMonsters.catch(err => {
+			alert('Sorry,cannot load the monsters, try again later');
+			console.log('Cought an error in MonsterList', err);
+		});
+	}
+
+	removeMonster(monsterId: string) {
+		this.monsterService.remove(monsterId)
+			.then((monsters: MonsterModel[])=> {
+				this.monsters = monsters;
+				this.toastr.success('You are awesome!', 'Success!');
+			});
+	}
 }

@@ -1,15 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormGroup, FormBuilder, Validators, FormControl, FORM_DIRECTIVES} from '@angular/forms';
+import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import {MonsterService} from './monster.service';
 import {MonsterModel} from './monster.model';
-import {FILE_UPLOAD_DIRECTIVES, FileUploader} from 'ng2-file-upload';
+import {FileUploader} from 'ng2-file-upload';
 
 @Component({
-	// moduleId   : module.id,
-	// selector: 'monster-edit',
+	selector: 'monster-edit',
 	templateUrl: 'monster-edit.component.html',
-	directives : [FILE_UPLOAD_DIRECTIVES]
 })
 export class MonsterEditComponent implements OnInit {
 

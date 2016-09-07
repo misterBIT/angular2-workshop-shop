@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {ChatRoomService} from './chat-room.service';
 @Component({
     selector: 'chat-room',
@@ -18,10 +18,14 @@ import {ChatRoomService} from './chat-room.service';
       </section>
     `
 })
-export class ChatRoomComponent {
+export class ChatRoomComponent implements OnDestroy{
 
     constructor(private chatRoom: ChatRoomService) {
         chatRoom.connect();
+    }
+
+    ngOnDestroy(){
+        this.chatRoom.disconnect();
     }
 
 }

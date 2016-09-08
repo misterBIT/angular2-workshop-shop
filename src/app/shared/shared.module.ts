@@ -9,9 +9,9 @@ let commonPipes = [];
 let commonDirectives = [FILE_UPLOAD_DIRECTIVES];
 
 @NgModule({
-	declarations: commonPipes.concat(commonDirectives),
+	declarations: [...commonPipes, ...commonDirectives],
 	imports: sharedModules,
-	exports: commonDirectives.concat(commonPipes, sharedModules)
+	exports: [...commonDirectives, ...commonPipes, ...sharedModules]
 })
 export class SharedModule {
 }

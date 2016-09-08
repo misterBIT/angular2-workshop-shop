@@ -10,7 +10,8 @@
         "moduleResolution": "node"
     },
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "custom-typing.d.ts"
     ],
     "awesomeTypescriptLoaderOptions": {
         "useWebpackText": true

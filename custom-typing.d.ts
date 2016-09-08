@@ -1,6 +1,9 @@
 declare module 'simulant' {
-	export interface Simulant {
-		(event: string, data: any): Event;
-		fire(target: Node, event: Event);
+	namespace Simulant {
+		export interface simulant {
+			(event: string, data: any): Event;
+			fire(target: Node, event: Event);
+		}
 	}
+	export = Simulant.simulant;
 }

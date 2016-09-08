@@ -50,5 +50,11 @@ export class ChatRoomService {
 		});
 
 	}
+
+	disconnect() {
+		this.socket$.subscribe(socket=> {
+			socket.disconnect();
+		});
+	}
 }
 

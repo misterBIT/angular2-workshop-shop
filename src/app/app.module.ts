@@ -1,23 +1,17 @@
-import {NgModule}      from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
-import {Routes, RouterModule} from '@angular/router';
-import {AppComponent}  from './app.component';
-import {HomeComponent}  from './home/home.component';
-import {ChatRoomComponent} from './chat/chat-room.component';
-
-
-import {MonsterModule}  from './monster/monster.module';
-
-import {routes} from './app.routes';
+import {NgModule} from "@angular/core";
+import {RouterModule} from "@angular/router";
+import {AppComponent} from "./app.component";
+import {HomeComponent} from "./home/home.component";
+import {MonsterModule} from "./monster/monster.module";
+import {routes} from "./app.routes";
+import {ChatModule} from "./chat/chat.module";
+import {SharedModule} from "./shared/shared.module";
 
 
 @NgModule({
-	imports     : [BrowserModule, ReactiveFormsModule, HttpModule, MonsterModule, RouterModule.forRoot(routes)],       // module dependencies
-	declarations: [AppComponent, HomeComponent, ChatRoomComponent],   // components and directives
-	bootstrap   : [AppComponent],     // root component
-	providers   : []                    // services
+	imports: [RouterModule.forRoot(routes), MonsterModule, ChatModule,SharedModule],       // module dependencies
+	declarations: [AppComponent, HomeComponent],   // components and directives
+	bootstrap: [AppComponent],     // root component
 })
 export class AppModule {
 }

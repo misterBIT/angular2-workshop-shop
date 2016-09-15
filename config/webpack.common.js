@@ -5,6 +5,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
 	context: path.resolve(__dirname, '../'),
 	plugins: [
+		new webpack.ContextReplacementPlugin(
+			// The (\\|\/) piece accounts for path separators in *nix and Windows
+			/angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+			path.resolve(__dirname, '.../src') // location of your src
+		),
 		new CopyWebpackPlugin([{from: 'public/', to: '.'}]),
 	],
 	module: {
@@ -38,7 +43,7 @@ module.exports = {
 
 	resolve: {
 		root: [path.join(__dirname, 'src')],
-		extensions: ['',  '.js','.ts']
+		extensions: ['', '.js', '.ts']
 	},
 
 	devServer: {

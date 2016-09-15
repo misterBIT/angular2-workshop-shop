@@ -35,15 +35,12 @@ export class MonsterListComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		const prmMonsters = this.monsterService.query();
-
-		prmMonsters.then((monsters: MonsterModel[]) => {
-			this.monsters = monsters;
-		});
-
-		prmMonsters.catch(err => {
+		this.monsterService.query()
+			.then((monsters: MonsterModel[]) => {
+				this.monsters = monsters;
+			}).catch(err => {
 			alert('Sorry,cannot load the monsters, try again later');
-			console.log('Cought an error in MonsterList', err);
+			console.log('Cought an error in MonsterList');
 		});
 	}
 

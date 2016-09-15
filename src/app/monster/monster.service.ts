@@ -9,7 +9,7 @@ export class MonsterService {
 
 	private baseUrl = 'http://localhost:3003/data/monster/';
 
-	constructor(private http:Http) {
+	constructor(private http: Http) {
 	}
 
 
@@ -18,41 +18,35 @@ export class MonsterService {
 	}
 
 	// query (GETs a list)
-	query():Promise<MonsterModel[]> {
+	query(): Promise<MonsterModel[]> {
 
-		let prmMonsters = this.http.get(this.baseUrl)
+		return this.http.get(this.baseUrl)
 			.toPromise()
 			.then(res => {
 				const jsonMonsters = res.json();
-				return jsonMonsters.map((jsonMonster:any) =>
+				return jsonMonsters.map((jsonMonster: any) =>
 					new MonsterModel(jsonMonster));
+			}).catch(err => {
+				console.log('MonsterService::query - Problem talking to server');
+				throw err;
 			});
-
-		prmMonsters.catch(err => {
-			console.log('MonsterService::query - Problem talking to server');
-		});
-
-		return prmMonsters;
 	}
 
 	// get (GETs a single)
-	get(id:string):Promise<MonsterModel> {
-		let prmMonster = this.http.get(this.baseUrl + id)
+	get(id: string): Promise<MonsterModel> {
+		return this.http.get(this.baseUrl + id)
 			.toPromise()
 			.then(res => {
 				const jsonMonster = res.json();
 				return new MonsterModel(jsonMonster);
+			}).catch(err => {
+				console.log('MonsterService::get - Problem talking to server');
 			});
-
-		prmMonster.catch(err => {
-			console.log('MonsterService::get - Problem talking to server');
-		});
-		return prmMonster;
 
 	}
 
 	// DELETE
-	remove(id:string):Promise<MonsterModel[]> {
+	remove(id: string): Promise<MonsterModel[]> {
 		let prmMonster = this.http.delete(this.baseUrl + id)
 			.toPromise()
 			.then(res => {
@@ -66,10 +60,10 @@ export class MonsterService {
 	}
 
 	// save - Adds (POST) or update (PUT)
-	save(monsterData:any, id?:string):Promise<MonsterModel> {
+	save(monsterData: any, id?: string): Promise<MonsterModel> {
 
-		let response:any;
-		let prmMonster:Promise<MonsterModel>;
+		let response: any;
+		let prmMonster: Promise<MonsterModel>;
 
 		if (id) {
 			const url = this.baseUrl + id;
@@ -80,7 +74,7 @@ export class MonsterService {
 		}
 
 		prmMonster = response.toPromise()
-			.then((res:any) => {
+			.then((res: any) => {
 				const jsonMonster = res.json();
 				return new MonsterModel(jsonMonster);
 			});

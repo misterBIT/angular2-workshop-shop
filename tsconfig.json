@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
+        "module": "es2015",
         "target": "es5",
         "outDir": "dist",
         "rootDir": ".",
@@ -10,8 +10,7 @@
         "moduleResolution": "node"
     },
     "exclude": [
-        "node_modules",
-        "custom-typing.d.ts"
+        "node_modules"
     ],
     "awesomeTypescriptLoaderOptions": {
         "useWebpackText": true

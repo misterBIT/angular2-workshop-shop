@@ -1,7 +1,7 @@
-import {TestBed, inject} from "@angular/core/testing/test_bed";
+import {TestBed, inject} from "@angular/core/testing";
 import {ChatRoomComponent} from "./chat-room.component";
 import {ChatRoomService} from "./chat-room.service";
-import {Subject, BehaviorSubject} from "rxjs";
+import {BehaviorSubject} from "rxjs";
 import {async} from "@angular/core/testing/async";
 import {ComponentFixture} from "@angular/core/testing/component_fixture";
 import {By} from "@angular/platform-browser";

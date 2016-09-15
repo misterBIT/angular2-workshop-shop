@@ -38,7 +38,7 @@ module.exports = {
 
 	resolve: {
 		root: [path.join(__dirname, 'src')],
-		extensions: ['', '.ts', '.js']
+		extensions: ['',  '.js','.ts']
 	},
 
 	devServer: {

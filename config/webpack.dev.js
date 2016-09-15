@@ -4,7 +4,7 @@ const webpack = require('webpack');
 
 // Webpack dev Config
 const webpackConfig = {
-	plugins: [new webpack.optimize.OccurenceOrderPlugin(true),
+	plugins: [
 		new webpack.optimize.CommonsChunkPlugin({name: ['app', 'vendor', 'polyfills'], minChunks: Infinity}),],
 	entry: {
 		'polyfills': './src/polyfills.ts',

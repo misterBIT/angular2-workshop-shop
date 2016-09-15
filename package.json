@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Angular2 Webpack Starter Project",
   "scripts": {
-    "start": "webpack-dev-server --inline --colors --progress --display-error-details --display-cached --port 8080 --content-base src",
+    "start": "webpack-dev-server --inline  --progress --port 8080 --content-base src",
     "build": "webpack",
     "test": "karma start",
     "tdd": "karma start --no-single-run --auto-watch"
@@ -30,13 +30,14 @@
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.1",
     "to-string-loader": "^1.1.4",
+    "ts-helpers": "^1.1.1",
     "tslint": "^3.14.0",
     "tslint-loader": "^2.1.5",
     "typescript": "^2.0.2",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.0",
-    "webpack-merge": "^0.8.4"
+    "webpack": "2.1.0-beta.22",
+    "webpack-dev-server": "2.1.0-beta.4",
+    "webpack-merge": "0.14.1"
   },
   "dependencies": {
     "@angular/common": "2.0.0",

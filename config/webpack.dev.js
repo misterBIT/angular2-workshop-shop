@@ -1,10 +1,12 @@
 const defaultConfig = require('./webpack.common');
 const webpackMerge = require('webpack-merge');
 const webpack = require('webpack');
+const path = require('path');
 
 // Webpack dev Config
 const webpackConfig = {
-	plugins: [new webpack.optimize.OccurenceOrderPlugin(true),
+	plugins: [
+
 		new webpack.optimize.CommonsChunkPlugin({name: ['app', 'vendor', 'polyfills'], minChunks: Infinity}),],
 	entry: {
 		'polyfills': './src/polyfills.ts',
@@ -12,7 +14,7 @@ const webpackConfig = {
 		'main': './src/main.ts'
 	},
 	output: {
-		path: './dist'
+		path: path.resolve(__dirname, '../dist'),
 	},
 	module: {
 		preLoaders: [

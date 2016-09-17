@@ -4,7 +4,7 @@ require('core-js/es6');
 require('core-js/es7/reflect');
 
 // Typescript emit helpers polyfill
-// require('ts-helpers');
+require('ts-helpers');
 
 require('zone.js/dist/zone');
 require('zone.js/dist/long-stack-trace-zone');
@@ -19,13 +19,12 @@ require('rxjs/Rx');
 
 const testing = require('@angular/core/testing');
 const browser = require('@angular/platform-browser-dynamic/testing');
-const test_bed = require('@angular/core/testing/test_bed');
 
 function requireAll(requireContext) {
 	return requireContext.keys().map(requireContext);
 }
 
-test_bed.TestBed.initTestEnvironment(
+testing.TestBed.initTestEnvironment(
 	browser.BrowserDynamicTestingModule,
 	browser.platformBrowserDynamicTesting()
 );

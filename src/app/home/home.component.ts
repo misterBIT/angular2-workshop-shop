@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
                     <h1>Home sweet Home</h1>
                     <p>This is an Angular2 seed project:</p>
                     <ul>
-                        <li>Driven by Webpack</li>
+                        <li>Driven by Webpack 2, Typescript 2 and Angular 2!</li>
                         <li>Showcasing routing and aux routes</li>
                         <li>Demoing a full crud working with a rest api</li>
-                        <li>Using a websoket with some reactive superpowers for a simple chat component</li>
+                        <li>Using a websocket with some reactive superpowers for a simple chat component</li>
                     </ul>
                 </section>`
 })

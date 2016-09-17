@@ -1,8 +1,8 @@
-import {TestBed, inject} from "@angular/core/testing/test_bed";
+import {TestBed, inject, async} from "@angular/core/testing";
 import {ChatRoomService} from "./chat-room.service";
 import * as io from "socket.io-client";
 import {Observable} from "rxjs";
-import {async} from "@angular/core/testing/async";
+
 describe('Chat room service', ()=> {
 	let ioMock: IoMock;
 
@@ -38,14 +38,14 @@ describe('Chat room service', ()=> {
 					throw new Error('event ' + evName + ' was not registered on mock!');
 				}
 			},
-			eventsHash$ : {}
+			eventsHash$: {}
 		}, jasmine.createSpyObj('io', ['connect', 'disconnect', 'emit']));
 
 		TestBed.configureTestingModule({
 			providers: [
 				ChatRoomService,
 				{
-					provide : 'io',
+					provide: 'io',
 					useValue: jasmine.createSpy('ioFactory', ()=> {
 						return ioMock;
 					}).and.callThrough()

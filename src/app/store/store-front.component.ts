@@ -1,15 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {IStoreItems, StoreService} from './store.service';
+import {IStoreItem, StoreService} from './store.service';
 
 @Component({
     selector: 'store-front',
     template: `<h3>Store</h3>
-<ul>
-<li *ngFor="let item of items">{{item.title}} - <span>{{item.price|currency}}</span></li>
-</ul>`
+<store-list [items]="items"></store-list>
+<shopping-cart [shoppingCart]="storeSvc.shoppingCart"></shopping-cart>`
 })
 export class StoreFrontComponent implements OnInit {
-    private items: IStoreItems[];
+    private items: IStoreItem[];
 
     ngOnInit(): void {
         this.storeSvc.getItems().then((items)=> {

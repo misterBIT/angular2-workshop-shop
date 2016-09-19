@@ -1,20 +1,11 @@
-import { Component, OnInit, ViewChildren } from '@angular/core';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
-
-import {MonsterService} from './monster.service';
-import {MonsterModel} from './monster.model';
-import {FilterByPipe} from '../shared/pipes/filter-list.pipe';
-import {MonsterFilterComponent} from './monster-filter.component';
-import {MonsterThumbComponent} from './monster-thumb.component';
-
+import {Component, OnInit} from "@angular/core";
+import {ToastsManager} from "ng2-toastr/ng2-toastr";
+import {MonsterService} from "./monster.service";
+import {MonsterModel} from "./monster.model";
 
 @Component({
-  moduleId: module.id,
-  styleUrls: [`monster.css`],
-  pipes: [FilterByPipe],
-  directives: [MonsterFilterComponent, MonsterThumbComponent],
-  // selector: 'monster-list',
-  template: `
+	styleUrls: ['./monster.scss'],
+	template: `
     <section>
       <h2>Monsters</h2>
 
@@ -36,29 +27,28 @@ import {MonsterThumbComponent} from './monster-thumb.component';
   `
 })
 export class MonsterListComponent implements OnInit {
-  // TODO: let the pipe setup the initial filter
-  private filter;
-  private monsters : MonsterModel[] = [];
+	// TODO: let the pipe setup the initial filter
+	private filter;
+	private monsters: MonsterModel[] = [];
 
-  constructor(private toastr : ToastsManager, private monsterService : MonsterService) { }
+	constructor(private toastr: ToastsManager, private monsterService: MonsterService) {
+	}
 
-  ngOnInit() {
-    const prmMonsters = this.monsterService.query();
+	ngOnInit() {
+		this.monsterService.query()
+			.then((monsters: MonsterModel[]) => {
+				this.monsters = monsters;
+			}).catch(err => {
+			alert('Sorry,cannot load the monsters, try again later');
+			console.log('Cought an error in MonsterList');
+		});
+	}
 
-    prmMonsters.then((monsters : MonsterModel[]) => {
-      this.monsters = monsters;
-    });
-
-    prmMonsters.catch(err => {
-      alert('Sorry,cannot load the monsters, try again later');
-      console.log('Cought an error in MonsterList', err);
-    });
-  }
-  removeMonster(monsterId : string) {
-    this.monsterService.remove(monsterId)
-      .then((monsters : MonsterModel[])=>{
-        this.monsters = monsters;
-        this.toastr.success('You are awesome!', 'Success!');
-      });
-  }
+	removeMonster(monsterId: string) {
+		this.monsterService.remove(monsterId)
+			.then((monsters: MonsterModel[])=> {
+				this.monsters = monsters;
+				this.toastr.success('You are awesome!', 'Success!');
+			});
+	}
 }

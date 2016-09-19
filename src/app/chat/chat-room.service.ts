@@ -1,46 +1,60 @@
-import { Injectable, Inject } from '@angular/core';
-import {Observable, Subject} from 'rxjs/Rx';
-import * as io from 'socket.io-client';
+import {Injectable, Inject} from "@angular/core";
+import {Observable} from "rxjs/Rx";
+import {BehaviorSubject} from 'rxjs';
+
 
 @Injectable()
-export class ChatRoomService{
-  // url$ = Observable.of('https://socket-chat-example-qsaokhakmv.now.sh/');
-  url$ = Observable.of('http://localhost:3003');
-  private socket$ : any;
-  public connected$ : any;
-  public messages$ : any;
-  
-  public send$ = new Subject();
+export class ChatRoomService {
+	// url$ = Observable.of('https://socket-chat-example-qsaokhakmv.now.sh/');
+	url = 'http://localhost:3003';
+	private socket$: BehaviorSubject<any>;
+	public connected$: any;
+	public messages$: any;
 
-  constructor(@Inject('io') io){
-    this.socket$ = this.url$
-    // uncomment this line to activate a socket
-      .switchMap(url => Observable.of(io(url))); //TODO: add a button for state
-      // .switchMap(url => Observable.never());
-      
-    this.messages$ = this.socket$
-        .switchMap(socket => Observable.fromEvent(socket, 'chat message'))
-        // .do((ev)=>console.log('Got Msg:',  ev) )
-        .startWith([])
-        .scan((acc, curr)=> [...acc, curr]);
-    
-    const disconnect$ = this.socket$
-      .switchMap(socket => Observable.fromEvent(socket, 'disconnect'));
-      
-    const connect$ = this.socket$
-      .switchMap(socket => Observable.fromEvent(socket, 'connect'));
-    
-    this.connected$ = Observable.merge(
-      connect$.mapTo(true),
-      disconnect$.mapTo(false)
-    );
-    
-    this.send$.withLatestFrom(this.socket$, (message, socket: SocketIOClient.Socket)=>{
-      return {message, socket};
-    })
-    .subscribe(({message, socket})=>{
-      // console.log('Emitting msg: ', message);
-      socket.emit('chat message', message);
-    })
-  }
+	constructor(@Inject('io') private io: SocketIOClientStatic) {
+
+		this.socket$ = new BehaviorSubject(undefined);
+
+		this.messages$ = this.socket$
+			.switchMap(socket => Observable.fromEvent(socket, 'chat message'))
+			.startWith([])
+			.scan((acc, curr)=> [...<string[]>acc, curr]);
+
+		const disconnect$ = this.socket$
+			.switchMap(socket => Observable.fromEvent(socket, 'disconnect'));
+
+		const connect$ = this.socket$
+			.switchMap(socket => Observable.fromEvent(socket, 'connect'));
+
+		this.connected$ = Observable.merge(
+			connect$.mapTo(true),
+			disconnect$.mapTo(false)
+		);
+
+	}
+
+	connect() {
+		const socketRef = this.io(this.url);
+		this.socket$.next(socketRef);
+	}
+
+	send(message) {
+		this.socket$.subscribe((socket)=> {
+			socket.emit('chat message', message);
+		});
+	}
+
+	toggleConnectionStatus() {
+		this.socket$.subscribe(socket=> {
+			socket.disconnected ? socket.connect() : socket.disconnect();
+		});
+
+	}
+
+	disconnect() {
+		this.socket$.subscribe(socket=> {
+			socket.disconnect();
+		});
+	}
 }
+

@@ -1,11 +1,10 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import {Component, OnInit, EventEmitter} from '@angular/core';
 
 @Component({
-  moduleId: module.id,
-  selector: 'monster-filter',
-  outputs: ['filterChange'],
-  styles: [`section {background-color: #DDD; margin: 2em 0; padding:0.4em 1em 1em; border-radius:0.4em} `],
-  template: `
+	selector: 'monster-filter',
+	outputs: ['filterChange'],
+	styles: [`section {background-color: #DDD; margin: 2em 0; padding:0.4em 1em 1em; border-radius:0.4em} `],
+	template: `
       <section>
         <h3>Filter</h3>
         By Name: <input type="text" [(ngModel)]="filter.byName" (input)="filterChanged()" />
@@ -16,14 +15,18 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 })
 export class MonsterFilterComponent implements OnInit {
 
-  private filterChange = new EventEmitter();
+	private filterChange = new EventEmitter();
 
-  private filter = {byName: '', byPower: ''};
-  constructor() { }
+	private filter = {byName: '', byPower: ''};
 
-  ngOnInit() { }
-  filterChanged() {
-    this.filterChange.emit(this.filter);
-  }
+	constructor() {
+	}
+
+	ngOnInit() {
+	}
+
+	filterChanged() {
+		this.filterChange.emit(this.filter);
+	}
 
 }

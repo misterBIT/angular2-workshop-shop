@@ -2,24 +2,22 @@ import {Component, OnInit, Input} from '@angular/core';
 import {MonsterModel} from './monster.model';
 
 @Component({
-	moduleId : module.id,
 	selector : 'monster-thumb',
-	styleUrls: [`monster.css`],
+	styleUrls:['monster.scss'],
 	inputs   : ['monster'],
 	template : `
-          <section>
+          <section class="monster-thumb">
             <p>{{monster.name}}</p>
             <a routerLink="/monster/{{monster.id}}/{{monster.name}}">
               <img class="imgMonster" *ngIf="url" [src]="url" />
             </a>
-            <h6>Power: {{monster.power}}</h6>
+            <p>Power: {{monster.power}}</p>
 
           </section>
           `
 
 })
 export class MonsterThumbComponent implements OnInit {
-	@Input()
 	private monster:MonsterModel;
 	private url:string;
 

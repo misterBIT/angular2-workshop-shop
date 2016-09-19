@@ -1,28 +1,10 @@
-import {PLATFORM_DIRECTIVES} from "@angular/core";
-import {AppComponent} from "./app.component";
-import {MonsterListComponent} from "./monster/monster-list.component";
-import {MonsterComponent} from "./monster/monster.component";
-import {MonsterEditComponent} from "./monster/monster-edit.component";
-import {ChatRoomComponent} from "./chat/chat-room.component";
-import {RouterConfig, ROUTER_DIRECTIVES, provideRouter} from "@angular/router";
-import {MonsterResolver} from "./monster/monster.resolver";
-import {MonsterService} from "./monster/monster.service";
-import {PetsApp} from "./pets/pets-app";
+import { Routes } from '@angular/router';
+import {HomeComponent} from './home/home.component';
+import {ChatRoomComponent} from './chat/chat-room.component';
 
-const routes: RouterConfig = [
-  { path: '', component: AppComponent },
-  { path: 'pets', component: PetsApp },
-  { path: 'monster', component: MonsterListComponent },
-  { path: 'monster/edit', component: MonsterEditComponent , resolve: {monster: MonsterResolver}},
-  { path: 'monster/edit/:id', component: MonsterEditComponent },
-  { path: 'monster/:id/:name', component: MonsterComponent },
-  { path: 'chat', component: ChatRoomComponent }
 
-	]
-	;
-
-export const ROUTER_PROVIDERS = [
-	provideRouter(routes),
-	MonsterResolver,MonsterService,
-	{provide: PLATFORM_DIRECTIVES, useValue: ROUTER_DIRECTIVES, multi: true}
+export const routes: Routes = [
+  {path: '',  redirectTo: 'home', pathMatch: 'full'},
+  {path: 'home', component: HomeComponent},
+  { path: 'chat', component: ChatRoomComponent, outlet: 'aux'},
 ];

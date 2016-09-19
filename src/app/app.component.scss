@@ -1,8 +1,13 @@
 $badass: #bada55;
 
+
+body {
+  background: lightblue;
+}
+
 .container {
   margin-top: 50px;
-  background-color: $badass;
+  // background-color: $badass;
 }
 
 input.ng-invalid.ng-touched {

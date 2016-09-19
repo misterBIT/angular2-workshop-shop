@@ -6,10 +6,10 @@ export interface IMonsterOptions {
 }
 
 export class MonsterModel {
-	name?:string;
-	power?:number;
-	_id?:string;
-	imgUrl?:string;
+	name:string;
+	power:number;
+	_id:string;
+	imgUrl:string;
 
 	constructor(options:IMonsterOptions = {}) {
 		Object.assign(this, options);

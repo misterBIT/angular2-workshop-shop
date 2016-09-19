@@ -1,39 +1,34 @@
-# Angular 2 QuickStart Source (simplified)
+# Angular 2 workshop seed app 
 
-This repository holds the TypeScript source code of the [angular.io quickstart](https://angular.io/docs/ts/latest/quickstart.html),
-the foundation for most of the documentation samples and potentially a good starting point for your application.
+This repository holds a simple demo seed app based on [angular2-starter](https://github.com/angular/angular2-seed/),
 
-Some differences from the source at [angular/quickstart](https://github.com/angular/quickstart):
-1. Testing and their dependencies were removed from this clone for simplification sake.
-2. Added Some simple routing 
-3. Sample CRUD module (without any fancy state solution)
-4. Basic Chat room with Socket.io 
+The "github browser" app in the original was replaced for a simple app with 3 sections
 
-
-**This is not the perfect arrangement for your application. It is not designed for production.
-It exists primarily to get you started quickly with learning and prototyping in Angular 2**
-
-We are unlikely to accept suggestions about how to grow this QuickStart into something it is not.
-Please keep that in mind before posting issues and PRs.
+1. simple "home" page
+2. monsters "app"  (discussed on the 2nd day)
+3. chat (disucssed on the 3rd day)
 
 ## Prerequisites
 
 Node.js and npm are essential to Angular 2 development. 
-    
+
 <a href="https://docs.npmjs.com/getting-started/installing-node" target="_blank" title="Installing Node.js and updating npm">
 Get it now</a> if it's not already installed on your machine.
  
-**Verify that you are running at least node `v5.x.x` and npm `3.x.x`**
+**Verify that you are running at least node `v6.x.x` and npm `3.x.x`**
 by running `node -v` and `npm -v` in a terminal/console window.
 Older versions produce errors.
 
-We recommend [nvm](https://github.com/creationix/nvm) for managing multiple versions of node and npm.
+We recommend [nvm](https://github.com/creationix/nvm) for managing multiple versions of node and npm. (not avilable for windows, other similar solutions exist) 
 
-## Create a new project based on the QuickStart
+ WINDOWS ONLY run to install dependencies as global 
+    npm install -g webpack webpack-dev-server typings typescript 
+    
+## Create a new project based on this app
 
 Download this repo or clone it into new project folder (e.g., `my-proj`).
 ```bash
-git clone  https://github.com/angular/quickstart  my-proj
+git clone  https://github.com/angular2-workshop-seed my-proj
 cd my-proj
 ```
 
@@ -74,28 +69,16 @@ npm install
 npm start
 ```
 
-> If the `typings` folder doesn't show up after `npm install` please install them manually with:
-
-> `npm run typings -- install`
-
-The `npm start` command first compiles the application, 
-then simultaneously re-compiles and runs the `lite-server`.
-Both the compiler and the server watch for file changes.
-
+The `npm start` command uses webpack (w/ dev-server) to run the applicaiton
 Shut it down manually with Ctrl-C.
 
 You're ready to write your application.
 
 ### npm scripts
 
-We've captured many of the most useful commands in npm scripts defined in the `package.json`:
+npm scripts defined in the `package.json`:
 
-* `npm start` - runs the compiler and a server at the same time, both in "watch mode".
-* `npm run tsc` - runs the TypeScript compiler once.
-* `npm run tsc:w` - runs the TypeScript compiler in watch mode; the process keeps running, awaiting changes to TypeScript files and re-compiling when it sees them.
-* `npm run lite` - runs the [lite-server](https://www.npmjs.com/package/lite-server), a light-weight, static file server, written and maintained by
-[John Papa](https://github.com/johnpapa) and
-[Christopher Martin](https://github.com/cgmartin)
-with excellent support for Angular apps that use routing.
-* `npm run typings` - runs the typings tool.
-* `npm run postinstall` - called by *npm* automatically *after* it successfully completes package installation. This script installs the TypeScript definition files this app requires.
+* `npm start` - runs the webpack compiler w/ dev-server, compiles changes delta to in memory-fs on the fly.
+* `npm test` - to run tests in Karama
+* `npm run build` - runs the webpack compiler to create production artifacts in dist folder.
+* `npm run tdd` - to run test in continuous watch mode (reruns all tests on change§0

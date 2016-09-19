@@ -16,15 +16,6 @@ const webpackConfig = {
 	output: {
 		path: path.resolve(__dirname, '../dist'),
 	},
-	module: {
-		preLoaders: [
-			{
-				test: /\.ts$/,
-				exclude: /node_modules/,
-				loader: "tslint"
-			}
-		]
-	}
 };
 
 

@@ -6,10 +6,10 @@ import {MonsterModule} from "./monster/monster.module";
 import {routes} from "./app.routes";
 import {ChatModule} from "./chat/chat.module";
 import {SharedModule} from "./shared/shared.module";
-
+import {BrowserModule} from "@angular/platform-browser";
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes), MonsterModule, ChatModule,SharedModule],       // module dependencies
+	imports: [BrowserModule, RouterModule.forRoot(routes), MonsterModule, ChatModule, SharedModule],       // module dependencies
 	declarations: [AppComponent, HomeComponent],   // components and directives
 	bootstrap: [AppComponent],     // root component
 })

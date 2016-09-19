@@ -1,12 +1,9 @@
 # Angular 2 workshop seed app 
 
-This repository holds a simple demo seed app based on [angular2-starter](https://github.com/angular/angular2-seed/),
+This repository holds a seed based on [angular2-starter](https://github.com/angular/angular2-seed/),
 
-The "github browser" app in the original was replaced for a simple app with 3 sections
-
-1. simple "home" page
-2. monsters "app"  (discussed on the 2nd day)
-3. chat (disucssed on the 3rd day)
+The "github browser" app in the original was removed and only a very bare "home" route exists for the basic module/component/route boilerplate 
+The simple example app that was here before was moved to [the samples repo](https://github.com/misterBIT/angular2-workshop-samples) 
 
 ## Prerequisites
 
@@ -21,10 +18,12 @@ Older versions produce errors.
 
 We recommend [nvm](https://github.com/creationix/nvm) for managing multiple versions of node and npm. (not avilable for windows, other similar solutions exist) 
 
- WINDOWS ONLY run to install dependencies as global 
-    npm install -g webpack webpack-dev-server typings typescript 
+ WINDOWS ONLY run to install npm script dependencies as global 
+    ````
+    npm install -g webpack@2.1.0-beta.22 webpack-dev-server@2.1.0-beta.4 typescript@2.0.2
+    ````
     
-## Create a new project based on this app
+## Create a new project based on this seed
 
 Download this repo or clone it into new project folder (e.g., `my-proj`).
 ```bash
@@ -69,7 +68,7 @@ npm install
 npm start
 ```
 
-The `npm start` command uses webpack (w/ dev-server) to run the applicaiton
+The `npm start` command uses webpack (w/ dev-server) to run the application
 Shut it down manually with Ctrl-C.
 
 You're ready to write your application.
@@ -79,6 +78,6 @@ You're ready to write your application.
 npm scripts defined in the `package.json`:
 
 * `npm start` - runs the webpack compiler w/ dev-server, compiles changes delta to in memory-fs on the fly.
-* `npm test` - to run tests in Karama
+* `npm test` - to run tests (src/**/*.spec.ts) in Karama
 * `npm run build` - runs the webpack compiler to create production artifacts in dist folder.
 * `npm run tdd` - to run test in continuous watch mode (reruns all tests on change§0

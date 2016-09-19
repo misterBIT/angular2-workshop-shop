@@ -1,15 +1,18 @@
 import {Injectable} from '@angular/core';
-
+import {Http} from '@angular/http';
+import 'rxjs/add/operator/toPromise';
 export interface IStoreItems {
     title: string;
     price: number;
 }
-const StoreItems = require('./storeItems.data.json');
 @Injectable()
 export class StoreService {
+    constructor(private http: Http) {
+    }
+
     getItems(): Promise<IStoreItems[]> {
-        return new Promise((resolve, reject)=> {
-            resolve(<IStoreItems[]>StoreItems);
-        });
+        return this.http.get('./storeItems.data.json')
+            .map((res)=><IStoreItems[]>res.json())
+            .toPromise();
     }
 }

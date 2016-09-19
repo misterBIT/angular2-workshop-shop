@@ -29,7 +29,8 @@ module.exports = {
 			{test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
 			{test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml'},
 			{test: /\.scss$/, loaders: ["to-string-loader", "css", 'resolve-url', "sass"]},
-			{test: /\.html$/, loader: 'raw-loader'}
+			{test: /\.html$/, loader: 'raw-loader'},
+			{test: /\.json$/, loader: 'json-loader'}
 		]
 	},
 	devtool: 'cheap-module-source-map',

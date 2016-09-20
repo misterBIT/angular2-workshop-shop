@@ -4,6 +4,7 @@ import {StoreAdminComponent} from "./store-admin.component";
 import {StoreListComponent} from "./store-list.component";
 import {StoreItemComponent} from "./store-item.component";
 import {StoreListResolver} from "./store-list.resolver";
+import {AuthGuard} from "../shared/auth.guard";
 export const storeRoutes: Routes = [
 	{
 		path: 'store', component: StoreFrontComponent, children: [
@@ -12,6 +13,5 @@ export const storeRoutes: Routes = [
 
 	]
 	},
-
-	{path: 'storeAdmin', component: StoreAdminComponent},
+	{path: 'storeAdmin', component: StoreAdminComponent, canActivate: [AuthGuard]},
 ];

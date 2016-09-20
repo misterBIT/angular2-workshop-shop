@@ -12,7 +12,6 @@
     "@types/core-js": "^0.9.32",
     "@types/jasmine": "^2.2.33",
     "@types/node": "^6.0.38",
-    "@types/socket.io-client": "^1.4.26",
     "@types/source-map": "^0.1.26",
     "@types/uglify-js": "^2.0.27",
     "@types/webpack": "^1.12.33",

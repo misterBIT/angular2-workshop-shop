@@ -12,6 +12,15 @@
     "exclude": [
         "node_modules"
     ],
+    "types": [
+        "jasmine",
+        "webpack",
+        "source-map",
+        "uglifyjs",
+        "core-js",
+        "node",
+        "socket.io-client"
+    ],
     "awesomeTypescriptLoaderOptions": {
         "useWebpackText": true
     },

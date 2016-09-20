@@ -7,13 +7,18 @@ export interface IStoreItem {
 }
 @Injectable()
 export class StoreService {
-    shoppingCart: IStoreItem[] = []
+    shoppingCart: IStoreItem[] = [];
 
     constructor(private http: Http) {
     }
 
     getItems(): Promise<IStoreItem[]> {
-        return this.http.get('./storeItems.data.json')
+        return this.http.get('http://localhost:3003/data/storeItems')
+            .map((res)=><IStoreItem[]>res.json())
+            .toPromise();
+    }
+    addItem(data): Promise<IStoreItem[]> {
+        return this.http.post('http://localhost:3003/data/storeItems',data)
             .map((res)=><IStoreItem[]>res.json())
             .toPromise();
     }
@@ -24,7 +29,7 @@ export class StoreService {
     }
 
     removeItem(index: number) {
-        this.shoppingCart = [...this.shoppingCart.slice(0, index), ...this.shoppingCart.slice(index + 1)]
+        this.shoppingCart = [...this.shoppingCart.slice(0, index), ...this.shoppingCart.slice(index + 1)];
 
     }
 }

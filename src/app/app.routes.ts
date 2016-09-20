@@ -5,6 +5,5 @@ import {StoreFrontComponent} from './store/store-front.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
-    {path: 'home', component: HomeComponent},
-    {path: 'store', component: StoreFrontComponent},
+    {path: 'home', component: HomeComponent}
 ];

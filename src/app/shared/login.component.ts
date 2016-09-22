@@ -1,52 +1,38 @@
-import {Component}   from '@angular/core';
-import {Router, NavigationExtras}      from '@angular/router';
-import {AuthService} from "./auth.service";
+import {Component, ChangeDetectionStrategy}   from '@angular/core';
+import {select} from "ng2-redux";
+import {Observable} from "rxjs";
+import {LoginActions} from "./login.actions";
 
 @Component({
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: `
     <h2>LOGIN</h2>
-    <p>{{message}}</p>
+    <p>{{message$|async}}</p>
     <p>
-      <button (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
-      <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
+      <button (click)="login()"  *ngIf="!(login$|async)">Login</button>
+      <button (click)="logout()" *ngIf="login$|async">Logout</button>
     </p>`
 })
 export class LoginComponent {
-	message: string;
 
-	constructor(public authService: AuthService, public router: Router) {
-		this.setMessage();
+	@select(['login', 'isLoggedIn']) login$: Observable<boolean>;
+	@select(['login', 'loginRequestPending']) requestPending$: Observable<boolean>;
+
+	private message$: Observable<string> = Observable.combineLatest(this.login$, this.requestPending$)
+		.map(([loginState,pendingRequest]) => (pendingRequest)
+			? 'Trying to login.... ' :
+			`Logged ${(loginState) ? 'in' : 'out' }`);
+
+	constructor(private loginActions: LoginActions) {
 	}
 
-	setMessage() {
-		this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
-	}
 
 	login() {
-		this.message = 'Trying to log in ...';
-
-		this.authService.login().subscribe(() => {
-			this.setMessage();
-			if (this.authService.isLoggedIn) {
-				// Get the redirect URL from our auth service
-				// If no redirect has been set, use the default
-				let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/';
-
-				// Redirect the user but keep params
-				// 				let navigationExtras: NavigationExtras = {
-				// 					preserveQueryParams: true,
-				// 					preserveFragment: true
-				// 				};
-				//
-				// 				this.router.navigate([redirect], navigationExtras);
-				this.router.navigate([redirect]);
-			}
-		});
+		this.loginActions.loginAction();
 	}
 
 	logout() {
-		this.authService.logout();
-		this.setMessage();
+		this.loginActions.logoutAction();
 	}
 }
 

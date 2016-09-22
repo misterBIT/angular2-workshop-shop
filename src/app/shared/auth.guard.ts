@@ -4,20 +4,21 @@ import {
 	ActivatedRouteSnapshot,
 	RouterStateSnapshot
 }    from '@angular/router';
-import {AuthService}            from './auth.service';
+import {NgRedux} from "ng2-redux";
+import {LoginActions} from "./login.actions";
+import {IShopState} from "../shop/shop.initialState";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-	constructor(private authService: AuthService, private router: Router) {
+	constructor(private ngrx: NgRedux<IShopState>, private router: Router,private loginActions:LoginActions) {
 	}
 
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-		if (this.authService.isLoggedIn) {
+		if (this.ngrx.getState().login.isLoggedIn) {
 			return true;
 		}
-
+		this.loginActions.storeRedirectUrl(state.url);
 		// Store the attempted URL for redirecting
-		this.authService.redirectUrl = state.url;
 
 		// Create a dummy session id
 		let sessionId = 123456789;

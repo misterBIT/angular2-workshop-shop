@@ -8,14 +8,13 @@ import {ShopAdminComponent} from "./shop-admin.component";
 import {RouterModule} from "@angular/router";
 import {shopRoutes} from "./shop.routes";
 import {ShopDetailComponent} from "./shop-item-detail.component";
-import {StoreListResolver} from "./shop-list.resolver";
 import {ShopActions} from "./shop.actions";
 import {StoreListItemComponent} from "./shop-item.compoent";
 import {ShopDetailContainer} from "./shop-item-detail.container";
 import {ShopAdminListComponent} from "./shop-admin-list.component";
 import {ShopItemEditComponent} from "./shop-item-edit.component";
 @NgModule({
-	providers: [ShopService, StoreListResolver, ShopActions],
+	providers: [ShopService, ShopActions],
 	declarations: [ShopFrontComponent, ShopListComponent, ShoppingCartCompoennt, ShopAdminComponent, ShopDetailComponent, StoreListItemComponent, ShopDetailContainer, ShopAdminListComponent, ShopItemEditComponent],
 	imports: [SharedModule, RouterModule.forChild(shopRoutes)],
 	exports: [ShopFrontComponent, ShopAdminComponent],

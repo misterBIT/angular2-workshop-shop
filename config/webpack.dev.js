@@ -6,7 +6,6 @@ const path = require('path');
 // Webpack dev Config
 const webpackConfig = {
 	plugins: [
-
 		new webpack.optimize.CommonsChunkPlugin({name: ['app', 'vendor', 'polyfills'], minChunks: Infinity}),],
 	entry: {
 		'polyfills': './src/polyfills.ts',

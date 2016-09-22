@@ -1,21 +1,21 @@
 import {Component, ChangeDetectionStrategy} from '@angular/core';
-import {StoreService, IStoreItem} from './store.service';
+import {ShopService, IShopItem} from './shop.service';
 import {Input} from '@angular/core/src/metadata/directives';
+import {ShopActions} from "./shop.actions";
 
 @Component({
 	selector: 'shopping-cart',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: `<h2>Shopping Cart</h2><ul>
-<li *ngFor="let item of shoppingCart;let i = index">{{item.title}} <button (click)="store.removeItem(i)">X</button></li>
+<li *ngFor="let item of shoppingCart;let i = index">{{item.title}} <button (click)="shopActions.removeItemFromCart(i)">X</button></li>
 
 </ul>
 <span>Total Sum:{{sum}}</span>`
 })
 export class ShoppingCartCompoennt {
-	@Input() shoppingCart: IStoreItem[] = [];
+	@Input() shoppingCart: IShopItem[] = [];
 
-	constructor(private store: StoreService) {
-
+	constructor(private shopActions: ShopActions) {
 	}
 
 	get sum() {

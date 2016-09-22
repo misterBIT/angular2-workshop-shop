@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "module": "es2015",
+        "module": "commonjs",
         "target": "es5",
         "outDir": "dist",
         "rootDir": ".",
@@ -16,6 +16,7 @@
         "jasmine",
         "webpack",
         "source-map",
+        "redux-logger",
         "uglifyjs",
         "core-js",
         "node",

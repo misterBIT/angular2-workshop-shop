@@ -12,6 +12,7 @@
     "@types/core-js": "^0.9.32",
     "@types/jasmine": "^2.2.33",
     "@types/node": "^6.0.38",
+    "@types/redux-logger": "^2.6.32",
     "@types/source-map": "^0.1.26",
     "@types/uglify-js": "^2.0.27",
     "@types/webpack": "^1.12.33",
@@ -50,14 +51,17 @@
     "bootstrap": "^3.3.6",
     "core-js": "^2.4.1",
     "ie-shim": "^0.1.0",
-    "rxjs": "5.0.0-beta.12",
-    "zone.js": "~0.6.21",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^2.0.0 ",
     "karma-coverage": "^1.0.0",
     "karma-jasmine": "^1.0.2",
     "karma-mocha-reporter": "^2.0.0",
     "karma-sourcemap-loader": "^0.3.7",
-    "karma-webpack": "1.8.0"
+    "karma-webpack": "1.8.0",
+    "ng2-redux": "^4.0.0-beta.0",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.6.1",
+    "rxjs": "5.0.0-beta.12",
+    "zone.js": "~0.6.21"
   }
 }

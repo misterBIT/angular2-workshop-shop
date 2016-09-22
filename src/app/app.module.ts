@@ -23,7 +23,7 @@ import {LoginActions} from "./shared/login.actions";
 })
 export class AppModule {
 	constructor(ngRedux: NgRedux<IShopState>) {
-		ngRedux.configureStore(<Reducer<IShopState>>combineReducers({items: ItemsReducer, shoppingCart: CartReducer, login: LoginReducer}), StoreInitialState, [createLogger()]);
+		ngRedux.configureStore(<Reducer<IShopState>>combineReducers({items: ItemsReducer, shoppingCart: CartReducer, login: LoginReducer}), undefined, [createLogger()]);
 	}
 }
 

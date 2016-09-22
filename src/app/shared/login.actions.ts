@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {NgRedux} from "ng2-redux";
 import {Router} from "@angular/router";
 import {IShopState} from "../shop/shop.initialState";
+import {setPersistedLoginState, removePresistedLogin} from "./login.reducer";
 @Injectable()
 export class LoginActions {
 	public static STORE_REDIRECT = 'STORE_REDIRECT';
@@ -18,6 +19,7 @@ export class LoginActions {
 			this.ngRedux.dispatch({type: LoginActions.LOGIN_APPROVED});
 			const loginState = this.ngRedux.getState().login;
 			if (loginState.isLoggedIn) {
+				setPersistedLoginState(loginState.isLoggedIn);
 				// Get the redirect URL from our auth service
 				// If no redirect has been set, use the default
 				let redirect = loginState.redirectUrl ? loginState.redirectUrl : '/';
@@ -35,6 +37,7 @@ export class LoginActions {
 	}
 
 	logoutAction() {
+		removePresistedLogin();
 		this.ngRedux.dispatch({type: LoginActions.LOGOUT});
 	}
 

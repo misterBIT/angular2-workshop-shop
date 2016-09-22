@@ -1,13 +1,30 @@
-
 export interface LoginState {
 	loginRequestPending: boolean;
 	isLoggedIn: boolean;
 	redirectUrl: string;
 }
+const LOGINSTATEKEY = 'isLoggedIn';
+
+export function getPersistedLoginState() {
+	let loginState = false;
+	try {
+		loginState = JSON.parse(window.localStorage.getItem(LOGINSTATEKEY))
+	} catch (e) {
+		console.log(e);
+	}
+	return loginState;
+}
+
+export function setPersistedLoginState(state) {
+	window.localStorage.setItem(LOGINSTATEKEY, JSON.stringify(state));
+}
+export function removePresistedLogin() {
+	window.localStorage.removeItem(LOGINSTATEKEY);
+}
 
 export const initialLoginState: LoginState = {
 	loginRequestPending: false,
-	isLoggedIn: false,
+	isLoggedIn: getPersistedLoginState(),
 	redirectUrl: ''
 };
 import {LoginActions} from "./login.actions";

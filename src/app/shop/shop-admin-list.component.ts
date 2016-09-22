@@ -22,12 +22,12 @@ export class ShopAdminListComponent implements OnInit {
 		this.shopActions.loadShopItems();
 	}
 
-	edit() {
-
+	edit(item) {
+		this.shopActions.editItem(item)
 	}
 
-	delete() {
-
+	delete(item) {
+		this.shopActions.removeItemFromShop(item);
 	}
 
 }

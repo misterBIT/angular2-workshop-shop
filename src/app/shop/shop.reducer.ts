@@ -28,6 +28,12 @@ export function ItemsReducer(itemsState: IShopItem[] = StoreInitialState.items, 
 			itemsState = [...itemsState.slice(0, action.payload), ...itemsState.slice(action.payload + 1)];
 			break;
 		}
+		case ShopActions.ITEM_ADMIN_UPDATED: {
+			const newItem = action.payload;
+			let index = itemsState.indexOf(itemsState.filter(item=>item._id === newItem._id)[0]);
+			itemsState = [...itemsState.slice(0, index), newItem, ...itemsState.slice(index + 1)];
+			break;
+		}
 	}
 	return itemsState;
 }

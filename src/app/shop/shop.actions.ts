@@ -17,9 +17,18 @@ export class ShopActions {
 	static ITEM_REMOVED_FROM_CART = "ITEM_REMOVED_FROM_CART";
 	static ITEM_ADMIN_REMOVED = "ITEM_ADMIN_REMOVED";
 	static ITEM_ADMIN_ADDED = "ITEM_ADMIN_ADDED";
+	static ITEM_ADMIN_UPDATED = "ITEM_ADMIN_UPDATED";
 
 	constructor(private shopSvc: ShopService, private ngRedux: NgRedux<IShopState>, private router: Router) {
 
+	}
+
+	getItems() {
+		return this.ngRedux.getState().items;
+	}
+
+	getItem(itemId) {
+		return this.getItems().filter(item=>item._id === itemId)[0];
 	}
 
 	addItemToCart(item: IShopItem) {
@@ -31,11 +40,28 @@ export class ShopActions {
 	}
 
 	addItemToShop(item: IShopItem) {
-		this.ngRedux.dispatch(<StoreAction> {type: ShopActions.ITEM_ADMIN_ADDED, payload: item});
+		let sub = this.shopSvc.addItem(item)
+			.subscribe((res)=> {
+				this.ngRedux.dispatch(<StoreAction> {type: ShopActions.ITEM_ADMIN_ADDED, payload: res});
+			}, ()=> {
+				/// item not added
+
+			}, ()=> {
+				sub.unsubscribe();
+			})
+
 	}
 
 	removeItemFromShop(item: IShopItem) {
-		this.ngRedux.dispatch(<StoreAction> {type: ShopActions.ITEM_ADMIN_REMOVED, payload: item});
+		let sub = this.shopSvc.removeItem(item._id)
+			.subscribe((res)=> {
+				this.ngRedux.dispatch(<StoreAction> {type: ShopActions.ITEM_ADMIN_REMOVED, payload: this.getItems().indexOf(item)});
+			}, ()=> {
+				/// item not removed
+
+			}, ()=> {
+				sub.unsubscribe();
+			})
 	}
 
 	loadShopItems() {
@@ -53,6 +79,18 @@ export class ShopActions {
 		let index = items.indexOf(item);
 		let nextIndex = (index === items.length - 1) ? 0 : index + 1;
 		this.router.navigate(['shop', items[nextIndex]._id]);
+
+	}
+
+	editItem(item: IShopItem) {
+		this.router.navigateByUrl('/shopAdmin/edit/' + item._id);
+	}
+
+	updateItem(newValue: IShopItem) {
+		this.shopSvc.updateItem(newValue)
+			.subscribe((res)=> {
+				this.ngRedux.dispatch(<StoreAction>{type: ShopActions.ITEM_ADMIN_UPDATED, payload: res});
+			})
 
 	}
 }

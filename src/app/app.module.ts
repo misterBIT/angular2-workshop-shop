@@ -5,10 +5,10 @@ import {HomeComponent} from "./home/home.component";
 import {routes} from "./app.routes";
 import {SharedModule} from "./shared/shared.module";
 import {BrowserModule} from "@angular/platform-browser";
-import {StoreModule} from './store/store.module';
+import {ShopModule} from './shop/shop.module';
 
 @NgModule({
-	imports: [BrowserModule, StoreModule,RouterModule.forRoot(routes), SharedModule],       // module dependencies
+	imports: [BrowserModule, ShopModule,RouterModule.forRoot(routes), SharedModule],       // module dependencies
 	declarations: [AppComponent, HomeComponent],   // components and directives
 	bootstrap: [AppComponent],     // root component
 })

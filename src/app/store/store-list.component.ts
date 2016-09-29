@@ -1,19 +1,15 @@
-import {Component} from '@angular/core';
-import {Input} from '@angular/core/src/metadata/directives';
-import {IStoreItem, StoreService} from './store.service';
+import {Component, EventEmitter} from '@angular/core';
+import {IStoreItem} from './store.service';
+import {Input,Output} from "@angular/core";
 
 @Component({
-    selector: 'store-list',
-    template: `<ul>
-                <li *ngFor="let item of items">{{item.title}} - <span>{{item.price|currency}}</span> <button (click)="buyItem(item)">BUY</button></li> 
-                </ul>` ////convert to itemRenederComponent
+	selector: 'store-list',
+	template: `<ul>
+               		<li *ngFor="let item of items"><store-item-detail [item]="item"> <button (click)="purchase.emit(item)">BUY</button></store-item-detail> </li> 
+               </ul>`
 })
 export class StoreListComponent {
-    @Input() items: IStoreItem[];
-    constructor(private shoppingSvc:StoreService){}
+	@Input() items: IStoreItem[];
+	@Output() purchase = new EventEmitter<IStoreItem>();
 
-    buyItem(item) {
-        this.shoppingSvc.buyItem(item);
-
-    }
 }

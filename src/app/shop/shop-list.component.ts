@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {IShopItem, ShopService} from './shop.service';
+import {IShopItem} from "./shop.model";
+import {ShopService} from './shop.service';
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
@@ -26,7 +27,7 @@ export class ShopListComponent {
 	}
 
 	buyItem(item) {
-		this.shoppingSvc.buyItem(item);
+		this.shoppingSvc.addItemToCart(item);
 
 	}
 

@@ -1,5 +1,5 @@
 import {Component, ChangeDetectionStrategy, EventEmitter} from '@angular/core';
-import {IShopItem} from './shop.service';
+import {IShopItem} from "./shop.model";
 import {Input, Output} from '@angular/core';
 
 @Component({

@@ -16,7 +16,7 @@ export const shopRoutes: Routes = [
 	]
 	},
 	{
-		path: 'shopAdmin', component: ShopAdminComponent, canActivate: [AuthGuard], children: [
+		path: 'shopAdmin', component: ShopAdminComponent, canActivate: [AuthGuard], resolve: {items: ShopListResolver}, children: [
 		{path: 'add', component: ShopItemEditComponent},
 		{path: 'edit/:id', component: ShopItemEditComponent},
 		{path: ''}

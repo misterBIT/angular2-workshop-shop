@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {ShopService, IShopItem} from "./shop.service";
+import {IShopItem} from "./shop.model";
+import {ShopService} from "./shop.service";
 
 @Component({
 	selector: 'shop-item',

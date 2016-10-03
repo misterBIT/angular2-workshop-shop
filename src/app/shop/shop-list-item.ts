@@ -1,6 +1,5 @@
-import {Component, OnInit, EventEmitter} from '@angular/core';
-import {Input, Output} from "@angular/core";
-import {IShopItem} from "./shop.service";
+import {Component, Input} from "@angular/core";
+import {IShopItem} from "./shop.model";
 
 @Component({
 	selector: 'shop-list-item',

@@ -14,7 +14,8 @@ import {ShopAdminListComponent} from "./shop-admin-list.component";
 import {ShopItemEditComponent} from "./shop-item-edit-component";
 @NgModule({
 	providers: [ShopService, ShopListResolver],
-	declarations: [ShopFrontComponent, ShopListComponent, ShoppingCartCompoennt, ShopAdminComponent, ShopItemDetailComponent, StoreListItemComponent, ShopAdminComponent, ShopAdminListComponent, ShopItemEditComponent],
+	declarations: [ShopFrontComponent, ShopListComponent, StoreListItemComponent, ShopItemDetailComponent, ShoppingCartCompoennt,
+		ShopAdminComponent, ShopAdminListComponent, ShopItemEditComponent],
 	imports: [SharedModule, RouterModule.forChild(shopRoutes)],
 	exports: [ShopFrontComponent, ShopAdminComponent],
 })

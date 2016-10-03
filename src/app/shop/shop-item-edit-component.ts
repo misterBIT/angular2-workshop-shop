@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
+import {ShopService} from "./shop.service";
 
 @Component({
 	selector: 'store-item-edit',
@@ -17,11 +18,16 @@ export class ShopItemEditComponent implements OnInit {
 	itemForm: FormGroup;
 	formAction = 'Add';
 
-	constructor(private fb: FormBuilder, private route: ActivatedRoute) {
+	constructor(private fb: FormBuilder, private route: ActivatedRoute, private shopService: ShopService) {
 
 	}
 
 	onSubmit() {
+		if (this.formAction === 'add') {
+			this.shopService.addItemToShop(this.itemForm.value)
+		} else {
+			//this.shopService.editItemOfShop(this.itemForm.value)
+		}
 
 	}
 
@@ -32,5 +38,18 @@ export class ShopItemEditComponent implements OnInit {
 			price: [0, Validators.required],
 			"_id": [null]
 		});
+		this.route.params
+			.map(params=>(<any>params.id))
+			.subscribe(editID => {
+				if (editID) {
+					this.formAction = 'update';
+					this.shopService.getItem(editID).then((item)=> {
+						this.itemForm.setValue(item);
+					});
+				} else {
+					this.formAction = 'add';
+				}
+
+			})
 	}
 }

@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Hammer",
+    "price": "15"
+  },
+  {
+    "title": "Nails",
+    "price": "5.50"
+  },
+  {
+    "title": "Spoon",
+    "price": "7"
+  },
+  {
+    "title": "Fork",
+    "price": "8"
+  },
+  {
+    "title": "Bowl",
+    "price": "15"
+  },
+  {
+    "title": "Chair",
+    "price": "50"
+  },
+  {
+    "title": "Sofa",
+    "price": "500"
+  }
+]

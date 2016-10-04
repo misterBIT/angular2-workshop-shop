@@ -13,13 +13,6 @@ module.exports = {
 		new CopyWebpackPlugin([{from: 'public/', to: '.'}]),
 	],
 	module: {
-		preLoaders: [
-			{
-				test: /\.ts$/,
-				exclude: [/node_modules/, /\.spec\.ts$/],
-				loader: "tslint"
-			}
-		],
 		loaders: [
 			// .ts files for TypeScript
 			{test: /\.ts$/, loaders: ['awesome-typescript-loader', 'angular2-template-loader']},
@@ -29,10 +22,11 @@ module.exports = {
 			{test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
 			{test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml'},
 			{test: /\.scss$/, loaders: ["to-string-loader", "css", 'resolve-url', "sass"]},
-			{test: /\.html$/, loader: 'raw-loader'}
+			{test: /\.html$/, loader: 'raw-loader'},
+			{test: /\.json$/, loader: 'json-loader'}
 		]
 	},
-	devtool: 'cheap-module-source-map',
+	devtool: 'inline-source-map',
 	cache: true,
 	debug: true,
 	output: {

@@ -2,10 +2,16 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
     <span class="navbar-brand">
-        <a routerLink="/home" routerActive="active">Home</a> 
+        <a routerLink="/home" routerLinkActive="active">Home</a>
     </span>
             <ul class="nav navbar-nav">
+                <li><a routerLinkActive="active" routerLink="shop">Shop</a></li>
+                <li *ngIf="auth.isLoggedIn"><a routerLinkActive="active" routerLink="shopAdmin">Shop Admin</a></li>
                 <!-- ADD NAVIGATION ITEMS HERE-->
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+                <li><a routerLinkActive="active" routerLink="login">{{auth.isLoggedIn ? 'Logout' : 'Login'}}</a></li>
+                <li><a routerLinkActive="active" *ngIf="!auth.isLoggedIn" routerLink="register">Register</a></li>
             </ul>
         </div>
     </nav>

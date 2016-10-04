@@ -11,6 +11,7 @@
             </ul>
             <ul class="nav navbar-nav pull-right">
                 <li><a routerLinkActive="active" routerLink="login">{{auth.isLoggedIn ? 'Logout' : 'Login'}}</a></li>
+                <li><a routerLinkActive="active" *ngIf="!auth.isLoggedIn" routerLink="register">Register</a></li>
             </ul>
         </div>
     </nav>

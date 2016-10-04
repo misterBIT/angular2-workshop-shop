@@ -2,7 +2,7 @@ import {ShopFrontComponent} from "./shop-front.component";
 import {Routes} from "@angular/router";
 import {ShopAdminComponent} from "./shop-admin.component";
 import {ShopListComponent} from "./shop-list.component";
-import {AuthGuard} from "../shared/auth.guard";
+import {AuthGuard} from "../userAuth/auth.guard";
 import {ShopListResolver} from "./shop-list.resolver";
 import {ShopItemEditComponent} from "./shop-item-edit-component";
 import {ShopItemDetailComponent} from "./shop-item-detail.component";

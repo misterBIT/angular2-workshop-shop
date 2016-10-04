@@ -5,16 +5,15 @@ import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
 	selector: 'shop-list',
+	styles: [`h3 { margin-bottom:20px;}`],
 	template: `
 				<h3>
 				Product List
-				</h3><ul>
-                	<li (click)="gotoItem(item)" *ngFor="let item of items">
-                		<shop-list-item [item]="item">
-                			<button (click)="buyItem(item)">BUY</button>
-                		</shop-list-item>
-                	</li> 
-                </ul>`
+				</h3>
+                <shop-list-item *ngFor="let item of items" [item]="item" (click)="gotoItem(item)">
+                    <button class="btn btn-primary btn-small" (click)="buyItem($event,item)">BUY</button>
+                </shop-list-item>
+                `
 })
 export class ShopListComponent {
 	private items: IShopItem[];
@@ -22,16 +21,16 @@ export class ShopListComponent {
 	constructor(private shoppingSvc: ShopService, private route: ActivatedRoute, private router: Router) {
 	}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.items = this.route.snapshot.data['items'];
 	}
 
-	buyItem(item) {
+	buyItem($event: Event, item: IShopItem): void {
+		$event.stopPropagation();
 		this.shoppingSvc.addItemToCart(item);
-
 	}
 
-	gotoItem(item) {
+	gotoItem(item: IShopItem): void {
 		this.router.navigate(['shop', item._id]);
 	}
 }

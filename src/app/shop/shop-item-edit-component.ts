@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ShopService} from "./shop.service";
+import {ToastsManager} from "ng2-toastr";
 
 @Component({
 	selector: 'store-item-edit',
@@ -24,9 +25,9 @@ export class ShopItemEditComponent implements OnInit {
 
 	onSubmit() {
 		if (this.formAction === 'add') {
-			this.shopService.addItemToShop(this.itemForm.value)
+			this.shopService.addItemToShop(this.itemForm.value);
 		} else {
-			//this.shopService.editItemOfShop(this.itemForm.value)
+			this.shopService.editItemOfShop(this.itemForm.value)
 		}
 
 	}
@@ -39,7 +40,7 @@ export class ShopItemEditComponent implements OnInit {
 			"_id": [null]
 		});
 		this.route.params
-			.map(params=>(<any>params.id))
+			.map(params=>(params['id']))
 			.subscribe(editID => {
 				if (editID) {
 					this.formAction = 'update';

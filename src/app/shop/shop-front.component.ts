@@ -4,7 +4,7 @@ import {IShopItem} from "./shop.model";
 
 @Component({
 	selector: 'shop-front',
-	template: `<h3>shop</h3>
+	template: `<h3>Shop</h3>
 				<div class="col-xs-9">
 					<router-outlet></router-outlet>
 				</div>

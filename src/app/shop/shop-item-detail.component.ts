@@ -4,9 +4,10 @@ import {IShopItem} from "./shop.model";
 import {ShopService} from "./shop.service";
 
 @Component({
-	selector: 'shop-item',
-	template: `<h1>{{item?.title}}</h1>
+	selector: 'shop-item-detail',
+	template: `<h1>Details for {{item?.title}}</h1>
 			   <h3>{{item?.price}}</h3>`
+	//implement next item here
 })
 export class ShopItemDetailComponent implements OnInit {
 	private item: IShopItem;

@@ -7,7 +7,7 @@ import {ShoppingCartCompoennt} from './shopping-cart.component';
 import {ShopAdminComponent} from "./shop-admin.component";
 import {RouterModule} from "@angular/router";
 import {shopRoutes} from "./shop.routes";
-import {ShopItemDetailComponent} from "./shop-item.component";
+import {ShopItemDetailComponent} from "./shop-item-detail.component";
 import {ShopListResolver} from "./shop-list.resolver";
 import {StoreListItemComponent} from "./shop-list-item";
 import {ShopAdminListComponent} from "./shop-admin-list.component";

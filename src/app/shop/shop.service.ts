@@ -2,14 +2,15 @@ import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {IShopItem} from "./shop.model";
-import {Observable} from "rxjs";
+import {Router} from "@angular/router";
+import {ToastsManager} from "ng2-toastr";
 
 @Injectable()
 export class ShopService {
 	shoppingCart: IShopItem[] = [];
 	private items: IShopItem[] = [];
 
-	constructor(private http: Http) {
+	constructor(private http: Http, private toastsManager: ToastsManager, private router: Router) {
 	}
 
 	getItems(): Promise<IShopItem[]> {
@@ -43,7 +44,9 @@ export class ShopService {
 		return this.http.post('http://localhost:3003/data/shopItems', data)
 			.map((res)=><IShopItem>res.json())
 			.do((item)=> {
-				this.items = [...this.items, item];
+				this.toastsManager.success('item Added to Shop', 'Info');
+				this.items.push(item);
+				this.router.navigate(['/shopAdmin']);
 			})
 			.toPromise();
 	}
@@ -53,11 +56,16 @@ export class ShopService {
 			.map((res)=><IShopItem>res.json())
 			.map(()=> {
 				let index = this.items.indexOf(item);
-				this.items = [...this.items.slice(0, index), ...this.items.slice(index + 1)];
+				this.items.splice(index, 1);
+				this.toastsManager.warning('item removed from shop', 'Info');
+				this.router.navigate(['/shopAdmin']);
 			})
 			.toPromise();
 
 	}
 
 
+	editItemOfShop(item: IShopItem) {
+		this.toastsManager.warning('this method is still not implemented!', 'Alert!');
+	}
 }

@@ -18,5 +18,5 @@ export const userFieldsValidationSchema = {
 	repeatPassword: [Validators.required],
 	address_street: [Validators.required],
 	address_city: [Validators.required],
-	address_zip: [Validators.required, Validators.pattern('\d{5,7}')],
+	address_zip: [Validators.required, Validators.pattern('\\d{5,7}')],
 };
